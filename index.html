@@ -3,312 +3,450 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rido's Muscle-Up Dashboard</title>
+    <title>20-Week Recomposition & Muscle-Up Program</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0d0d0d;
-            --card-bg: #1a1a1a;
-            --text-main: #f0f0f0;
-            --text-muted: #a0a0a0;
-            --accent-color: #00ffcc; /* Cool neon cyan */
-            --accent-hover: #00cca3;
-            --border-color: #333;
+            --bg-color: #0b0c10;
+            --card-bg: #1f2833;
+            --text-main: #c5c6c7;
+            --text-heading: #ffffff;
+            --accent: #66fcf1;
+            --accent-muted: #45a29e;
+            --border: #333333;
         }
-
+        
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.6;
-            padding: 20px;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 40px 20px;
         }
 
-        .dashboard {
-            max-width: 1200px;
+        .container {
+            max-width: 900px;
             margin: 0 auto;
         }
 
         header {
             text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 50px;
         }
 
         h1 {
-            color: var(--accent-color);
-            font-size: 2.5rem;
+            color: var(--accent);
+            font-size: 2.8em;
+            font-weight: 800;
             margin-bottom: 10px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 20px rgba(102, 252, 241, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: var(--text-heading);
+            background: rgba(31, 40, 51, 0.8);
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 30px;
+            border: 1px solid var(--accent-muted);
         }
 
         h2 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--text-main);
-            border-left: 4px solid var(--accent-color);
-            padding-left: 10px;
+            color: var(--text-heading);
+            font-size: 1.6em;
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
         }
 
-        .citation {
-            font-size: 0.75rem;
-            color: #555;
-            vertical-align: super;
-            margin-left: 4px;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px;
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 24px;
+            background-color: var(--accent);
+            margin-right: 12px;
+            border-radius: 3px;
         }
 
         .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            transition: transform 0.2s ease, border-color 0.2s ease;
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.2s ease;
         }
-
+        
         .card:hover {
             transform: translateY(-2px);
-            border-color: var(--accent-color);
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        ul li {
-            margin-bottom: 10px;
-            color: var(--text-muted);
-        }
-
-        ul li strong {
-            color: var(--text-main);
+            border-color: rgba(102, 252, 241, 0.2);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
         th, td {
-            padding: 12px 10px;
+            padding: 15px;
             text-align: left;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border);
         }
 
         th {
-            color: var(--accent-color);
+            background-color: rgba(102, 252, 241, 0.08);
+            color: var(--accent);
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
         }
 
-        td {
-            color: var(--text-muted);
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        ul, ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        strong {
+            color: var(--text-heading);
+            font-weight: 600;
         }
 
         .highlight {
-            color: var(--accent-color);
+            color: var(--accent);
             font-weight: bold;
         }
-
-        .checklist-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            background: #252525;
-            padding: 10px;
-            border-radius: 6px;
-        }
-
-        .checklist-item input[type="checkbox"] {
-            margin-right: 15px;
-            accent-color: var(--accent-color);
-            width: 18px;
-            height: 18px;
-        }
-
-        .tag {
-            display: inline-block;
-            background: rgba(0, 255, 204, 0.1);
-            color: var(--accent-color);
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-right: 5px;
-            border: 1px solid rgba(0, 255, 204, 0.2);
+        
+        .checkbox-list {
+            list-style: none;
+            padding: 0;
         }
         
-        .full-width {
-            grid-column: 1 / -1;
+        .checkbox-list li {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border);
+        }
+        
+        .checkbox-list input[type="checkbox"] {
+            margin-right: 15px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .card { padding: 20px; }
+            h1 { font-size: 2em; }
+            th, td { padding: 10px; font-size: 0.9em; }
         }
     </style>
 </head>
 <body>
 
-    <div class="dashboard">
-        <header>
-            <h1>Road to Muscle-Up <span class="citation">[cite: 1]</span></h1>
-            <p style="color: var(--text-muted);">Rido's 7-Day Calisthenics Program Dashboard</p>
-        </header>
-
-        <div class="grid-container">
-            <!-- Overview Card -->
-            <div class="card full-width">
-                <h2>Program Overview <span class="citation">[cite: 1]</span></h2>
-                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 15px;">
-                    <span class="tag"><strong>Starting point:</strong> 2–3 strict pull-ups <span class="citation">[cite: 1]</span></span>
-                    <span class="tag"><strong>Goal:</strong> First strict muscle-up <span class="citation">[cite: 1]</span></span>
-                    <span class="tag"><strong>Split:</strong> Strength Mon/Wed/Fri (48h recovery) · Cardio Tue/Thu/Sat/Sun <span class="citation">[cite: 1]</span></span>
-                </div>
-                <p style="color: var(--text-muted);"><strong>Equipment needed:</strong> Pull-up bar, dip bars or rings, dumbbells, barbell, resistance bands (buy a set of 2–3 loop bands — they're the single most useful tool for this goal) <span class="citation">[cite: 1]</span>.</p>
-            </div>
-
-            <!-- Schedule Card -->
-            <div class="card">
-                <h2>Weekly Schedule <span class="citation">[cite: 1]</span></h2>
-                <table>
-                    <tbody>
-                        <tr><td><strong class="highlight">Monday</strong></td><td>Pull Strength + Muscle-Up Skill <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Tuesday</td><td>Cardio — Incline Walk <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td><strong class="highlight">Wednesday</strong></td><td>Push Strength + Core <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Thursday</td><td>Cardio — Jump Rope <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td><strong class="highlight">Friday</strong></td><td>Full Body Power + Muscle-Up Transition <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Saturday</td><td>Cardio (light) + Optional Skill Practice <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Sunday</td><td>Full Rest / Active Recovery <span class="citation">[cite: 1]</span></td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Roadmap Card -->
-            <div class="card">
-                <h2>The 3-Phase Roadmap <span class="citation">[cite: 1]</span></h2>
-                <table>
-                    <thead>
-                        <tr><th>Phase</th><th>Target Before Moving On</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><strong class="highlight">1 — Foundation (Wk 1-4)</strong> <span class="citation">[cite: 1]</span></td><td>8–10 strict pull-ups, 10–12 dips <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td><strong class="highlight">2 — Explosive Pull (Wk 5-8)</strong> <span class="citation">[cite: 1]</span></td><td>Chest-to-bar pull-ups, false grip hang 20–30s, band transitions <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td><strong class="highlight">3 — Transition (Wk 9-12+)</strong> <span class="citation">[cite: 1]</span></td><td>Band-assisted muscle-up x3–5, then first strict muscle-up <span class="citation">[cite: 1]</span></td></tr>
-                    </tbody>
-                </table>
-                <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">* You're currently entering <strong>Phase 1</strong>. Don't rush the transition/false-grip drills until the pull-up and dip numbers are there — most muscle-up injuries (wrist/shoulder) come from skipping this <span class="citation">[cite: 1]</span>.</p>
-            </div>
-
-            <!-- Monday Workout -->
-            <div class="card full-width">
-                <h2>Monday — Pull Strength + Muscle-Up Skill <span class="citation">[cite: 1]</span></h2>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px;"><strong>Warm-up (5–8 min):</strong> Light cardio, band pull-aparts 2x15, scapula pulls on bar 3x8, arm circles <span class="citation">[cite: 1]</span></p>
-                <table>
-                    <thead>
-                        <tr><th>Exercise</th><th>Sets x Reps</th><th>Rest</th><th>Notes</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Strict Pull-ups <span class="citation">[cite: 1]</span></td><td>5 x AMRAP <span class="citation">[cite: 1]</span></td><td>2–3 min <span class="citation">[cite: 1]</span></td><td>Use a band around the knee/foot if you can't hit 4+ reps on a set — leave 1 rep in the tank <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Negative Pull-ups <span class="citation">[cite: 1]</span></td><td>4 x 4–5 (5-sec lower) <span class="citation">[cite: 1]</span></td><td>90 sec <span class="citation">[cite: 1]</span></td><td>Jump/step to top, lower under control <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Chin-ups (underhand) <span class="citation">[cite: 1]</span></td><td>3 x max <span class="citation">[cite: 1]</span></td><td>90 sec <span class="citation">[cite: 1]</span></td><td>Easier variation — builds biceps + pulling volume <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Bent-over Dumbbell Rows <span class="citation">[cite: 1]</span></td><td>4 x 10–12 <span class="citation">[cite: 1]</span></td><td>60 sec <span class="citation">[cite: 1]</span></td><td>Free weight — builds the horizontal pull most people neglect <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Dead Hang <span class="citation">[cite: 1]</span></td><td>3 x 20–30 sec <span class="citation">[cite: 1]</span></td><td>60 sec <span class="citation">[cite: 1]</span></td><td>Grip and shoulder health, non-negotiable for bar work <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>False Grip Hang (bar or rings) <span class="citation">[cite: 1]</span></td><td>3 x 10–15 sec <span class="citation">[cite: 1]</span></td><td>60 sec <span class="citation">[cite: 1]</span></td><td>Muscle-up specific — start now even in Phase 1, just as a light skill primer <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Hanging Knee Raises <span class="citation">[cite: 1]</span></td><td>3 x 10–12 <span class="citation">[cite: 1]</span></td><td>60 sec <span class="citation">[cite: 1]</span></td><td>Core, also builds toward L-sit <span class="citation">[cite: 1]</span></td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Wednesday Workout -->
-            <div class="card full-width">
-                <h2>Wednesday — Push Strength + Core <span class="citation">[cite: 1]</span></h2>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px;"><strong>Warm-up (5–8 min):</strong> Arm circles, band shoulder dislocates, 2x10 incline push-ups <span class="citation">[cite: 1]</span></p>
-                <table>
-                    <thead>
-                        <tr><th>Exercise</th><th>Sets x Reps</th><th>Rest</th><th>Notes</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Dips (bars or rings) <span class="citation">[cite: 1]</span></td><td>5 x AMRAP <span class="citation">[cite: 1]</span></td><td>2–3 min <span class="citation">[cite: 1]</span></td><td>Band-assist or use bench dips if <5 reps unassisted <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Pike Push-ups <span class="citation">[cite: 1]</span></td><td>4 x 8–10 <span class="citation">[cite: 1]</span></td><td>90 sec <span class="citation">[cite: 1]</span></td><td>Builds the shoulder press strength needed for muscle-up lockout <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Standard/Diamond Push-ups <span class="citation">[cite: 1]</span></td><td>4 x 12–15 <span class="citation">[cite: 1]</span></td><td>60 sec <span class="citation">[cite: 1]</span></td><td>Diamond hits triceps harder — needed for the dip-out <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Dumbbell Shoulder Press <span class="citation">[cite: 1]</span></td><td>4 x 10 <span class="citation">[cite: 1]</span></td><td>90 sec <span class="citation">[cite: 1]</span></td><td>Free weight — standing or seated <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Dumbbell Overhead Triceps Extension <span class="citation">[cite: 1]</span></td><td>3 x 12 <span class="citation">[cite: 1]</span></td><td>60 sec <span class="citation">[cite: 1]</span></td><td>Triceps are the limiting muscle in the muscle-up's push phase <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Hollow Body Hold <span class="citation">[cite: 1]</span></td><td>4 x 20–30 sec <span class="citation">[cite: 1]</span></td><td>45 sec <span class="citation">[cite: 1]</span></td><td>Core tension — critical for the muscle-up "compression" pull <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Plank / L-sit attempt <span class="citation">[cite: 1]</span></td><td>3 x max hold <span class="citation">[cite: 1]</span></td><td>45 sec <span class="citation">[cite: 1]</span></td><td>Just attempt tucked L-sit if full L-sit isn't there yet <span class="citation">[cite: 1]</span></td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Friday Workout -->
-            <div class="card full-width">
-                <h2>Friday — Full Body Power + Muscle-Up Transition <span class="citation">[cite: 1]</span></h2>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px;"><strong>Warm-up (8–10 min):</strong> Full dynamic warm-up, band pull-aparts, scap pulls, easy dead hang <span class="citation">[cite: 1]</span></p>
-                <table>
-                    <thead>
-                        <tr><th>Exercise</th><th>Sets x Reps</th><th>Rest</th><th>Notes</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Explosive/Jump Pull-ups <span class="citation">[cite: 1]</span></td><td>5 x 3–5 <span class="citation">[cite: 1]</span></td><td>2 min <span class="citation">[cite: 1]</span></td><td>Pull as high and fast as possible each rep — trains the power the transition needs <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Muscle-Up Transition Drill <span class="citation">[cite: 1]</span></td><td>5 x 3–5 <span class="citation">[cite: 1]</span></td><td>2 min <span class="citation">[cite: 1]</span></td><td>Phase 1: practice the "turnover" with feet on the ground on a low bar/rings. Phase 2+: band-assisted muscle-ups <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Dip Support Hold + Top Hold <span class="citation">[cite: 1]</span></td><td>4 x 5 sec hold <span class="citation">[cite: 1]</span></td><td>60 sec <span class="citation">[cite: 1]</span></td><td>Lock-out strength at the top of the dip <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Goblet or Barbell Squat <span class="citation">[cite: 1]</span></td><td>4 x 10 <span class="citation">[cite: 1]</span></td><td>90 sec <span class="citation">[cite: 1]</span></td><td>Free weight — full-body strength carries over to the whole movement <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Deadlift (light–moderate) <span class="citation">[cite: 1]</span></td><td>3 x 8 <span class="citation">[cite: 1]</span></td><td>2 min <span class="citation">[cite: 1]</span></td><td>Form first — builds posterior chain and total-body power <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>L-sit Hold <span class="citation">[cite: 1]</span></td><td>4 x max <span class="citation">[cite: 1]</span></td><td>60 sec <span class="citation">[cite: 1]</span></td><td>Core strength for the compression phase <span class="citation">[cite: 1]</span></td></tr>
-                        <tr><td>Farmer's Carry (dumbbells) <span class="citation">[cite: 1]</span></td><td>3 x 30m <span class="citation">[cite: 1]</span></td><td>60 sec <span class="citation">[cite: 1]</span></td><td>Grip endurance <span class="citation">[cite: 1]</span></td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-             <!-- Cardio -->
-             <div class="card">
-                <h2>Cardio Days (Fat Loss) <span class="citation">[cite: 1]</span></h2>
-                <ul>
-                    <li><strong>Tuesday:</strong> Incline treadmill walk, 30–40 min, 10–12% incline, brisk pace (Zone 2 HR) <span class="citation">[cite: 1]</span></li>
-                    <li><strong>Thursday:</strong> Jump rope intervals: 30 sec on / 30 sec off x 15–20 rounds <span class="citation">[cite: 1]</span></li>
-                    <li><strong>Saturday:</strong> Longer incline walk (45 min) OR light jump rope + false-grip hang practice — active recovery, low intensity <span class="citation">[cite: 1]</span></li>
-                    <li><strong>Sunday:</strong> Full rest, or a gentle walk. Prioritize sleep here. <span class="citation">[cite: 1]</span></li>
-                </ul>
-            </div>
-
-            <!-- Notes -->
-            <div class="card">
-                <h2>Notes That Matter <span class="citation">[cite: 1]</span></h2>
-                <ul style="font-size: 0.85rem;">
-                    <li><strong>Recovery:</strong> 48h between strength sessions is correct for your level — don't add a 4th strength day yet. Muscle-up training is joint-intensive (wrists, elbows, shoulders); more isn't better right now. <span class="citation">[cite: 1]</span></li>
-                    <li><strong>Bands:</strong> Get 2–3 resistance band loops (light/medium/heavy). They're used for assisted pull-ups, assisted dips, and eventually assisted muscle-up transitions. <span class="citation">[cite: 1]</span></li>
-                    <li><strong>Rings vs. bar:</strong> If you can access gymnastic rings, the muscle-up turnover is often easier to learn there than on a fixed bar (rings rotate with your wrists). Not mandatory — bar works fine too. <span class="citation">[cite: 1]</span></li>
-                    <li><strong>Protein:</strong> Since you're combining strength + daily cardio, aim for roughly 1.6–2g protein per kg bodyweight to support recovery. <span class="citation">[cite: 1]</span></li>
-                    <li><strong>Sleep:</strong> 7–8 hours — this is where the actual strength adaptation happens, especially for connective tissue around the shoulders/wrists. <span class="citation">[cite: 1]</span></li>
-                    <li><strong>Deload:</strong> Every 5th–6th week, cut volume by ~40% for that week (fewer sets, same movements) to let joints catch up. <span class="citation">[cite: 1]</span></li>
-                    <li><strong>Track weekly:</strong> Max pull-ups, max dips, and false-grip hang time. These three numbers tell you exactly when to move phases. <span class="citation">[cite: 1]</span></li>
-                </ul>
-            </div>
-
-            <!-- Milestone Checklist -->
-            <div class="card full-width">
-                <h2>Milestone Checklist <span class="citation">[cite: 1]</span></h2>
-                <div class="checklist-item"><input type="checkbox"> <label>5 strict pull-ups <span class="citation">[cite: 1]</span></label></div>
-                <div class="checklist-item"><input type="checkbox"> <label>8 strict pull-ups <span class="citation">[cite: 1]</span></label></div>
-                <div class="checklist-item"><input type="checkbox"> <label>10 dips <span class="citation">[cite: 1]</span></label></div>
-                <div class="checklist-item"><input type="checkbox"> <label>Chest-to-bar pull-up <span class="citation">[cite: 1]</span></label></div>
-                <div class="checklist-item"><input type="checkbox"> <label>False grip hang 20–30 sec <span class="citation">[cite: 1]</span></label></div>
-                <div class="checklist-item"><input type="checkbox"> <label>Band-assisted muscle-up (light band) <span class="citation">[cite: 1]</span></label></div>
-                <div class="checklist-item"><input type="checkbox"> <label>Band-assisted muscle-up (no band / thin band) <span class="citation">[cite: 1]</span></label></div>
-                <div class="checklist-item"><input type="checkbox"> <label><strong class="highlight">First strict muscle-up</strong> <span class="citation">[cite: 1]</span></label></div>
-            </div>
-
+<div class="container">
+    <header>
+        <h1>20-Week Recomposition & Muscle-Up Program</h1>
+        <div class="subtitle">
+            <strong>Prepared for:</strong> Damin | 167 cm | 21 y/o | Starting weight 68.1 kg | Starting BF 26.3% [cite: 1]
         </div>
+    </header>
+
+    <div class="card">
+        <h2>1. Where You're Actually Starting (from your InBody data)</h2>
+        <p>Your last 9 scans (Jun 14 – Jul 13) show weight bouncing between <strong>67.7–69.6 kg</strong> and body fat between <strong>23.9–27.7%</strong>, with skeletal muscle mass flat at <strong>~28–29 kg</strong> [cite: 1]. That's a classic "inconsistent" pattern — no net progress either way [cite: 1]. Good news: nothing has been lost, so we're not starting from a hole [cite: 1].</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Value (Jul 13 scan)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Weight</td><td>68.1 kg [cite: 1]</td></tr>
+                <tr><td>Body Fat %</td><td>26.3% [cite: 1]</td></tr>
+                <tr><td>Fat Mass</td><td>17.9 kg [cite: 1]</td></tr>
+                <tr><td>Lean Body Mass</td><td>50.2 kg [cite: 1]</td></tr>
+                <tr><td>Skeletal Muscle Mass</td><td>28.3 kg [cite: 1]</td></tr>
+                <tr><td>BMR (measured, lean-mass based)</td><td>1454 kcal [cite: 1]</td></tr>
+                <tr><td>BMI</td><td>24.4 [cite: 1]</td></tr>
+            </tbody>
+        </table>
     </div>
+
+    <div class="card">
+        <h2>2. Is 26% → 15% BF in 20 weeks realistic?</h2>
+        <p>Yes — and it's actually a conservative target, not an aggressive one [cite: 1]. Here's the math [cite: 1]:</p>
+        <ul>
+            <li>If your lean mass stays roughly where it is (or grows slightly from training), hitting 15% BF means a bodyweight of <strong>~59–61 kg</strong> [cite: 1].</li>
+            <li>That means losing <strong>~8.5–9 kg of fat mass</strong> over 20 weeks = <strong>~0.45 kg/week</strong> (~1 lb/week) [cite: 1].</li>
+            <li>0.45 kg/week is a gentle, muscle-sparing rate of fat loss — well within what's achievable with a moderate deficit + resistance training + high protein, and it leaves plenty of room for beginner muscle gain ("newbie gains") to happen at the same time [cite: 1]. This is a genuine recomposition, not just a cut [cite: 1].</li>
+        </ul>
+        <p>The muscle-up is the more skill-dependent goal, but 20 weeks is a realistic runway from 2–3 strict pull-ups if you're consistent — see the phased plan below [cite: 1].</p>
+    </div>
+
+    <div class="card">
+        <h2>3. Calories & Macros</h2>
+        <p><strong>Maintenance (TDEE) estimate:</strong> Your BMR of 1454 kcal is measured from actual lean mass (this is the Katch-McArdle formula, and it checks out — more reliable for you than a generic age/height formula) [cite: 1]. With a desk job during the day plus structured training 6x/week and dedicated cardio [cite: 1]:</p>
+        <p><strong class="highlight" style="font-size: 1.2em;">Maintenance ≈ 2,250 kcal/day [cite: 1]</strong></p>
+        <p><strong>Target deficit:</strong> ~450–500 kcal/day → <strong>Target intake ≈ 1,750–1,800 kcal/day</strong> on average [cite: 1].</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Day type</th>
+                    <th>Calories</th>
+                    <th>Why</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Training days</td><td>~1,900–2,000 kcal [cite: 1]</td><td>Fuel the session, protect performance [cite: 1]</td></tr>
+                <tr><td>Rest days</td><td>~1,600–1,700 kcal [cite: 1]</td><td>Lower activity, bigger deficit here [cite: 1]</td></tr>
+                <tr><td><strong>Weekly average</strong></td><td><strong class="highlight">~1,780 kcal</strong> [cite: 1]</td><td>Matches the ~500 kcal/day deficit needed [cite: 1]</td></tr>
+            </tbody>
+        </table>
+
+        <p><strong>Macro targets (~1,780 kcal average day) [cite: 1]:</strong></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Macro</th>
+                    <th>Amount</th>
+                    <th>Calories</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Protein</td><td>150 g (~2.2 g/kg) [cite: 1]</td><td>~600 kcal [cite: 1]</td><td>Non-negotiable — this is what protects/builds muscle in a deficit. Eggs, chicken, fish, paneer, curd, dal all work well [cite: 1]</td></tr>
+                <tr><td>Fat</td><td>55 g [cite: 1]</td><td>~495 kcal [cite: 1]</td><td>Don't go lower — needed for hormones [cite: 1]</td></tr>
+                <tr><td>Carbs</td><td>~165 g [cite: 1]</td><td>~660 kcal [cite: 1]</td><td>Fuel training, time more of it around workouts [cite: 1]</td></tr>
+            </tbody>
+        </table>
+        
+        <p><em><strong>Important:</strong> These numbers are estimates based on formulas, not lab-measured TDEE. Re-check every 3–4 weeks: if weight/BF% (from your InBody scans) isn't trending down, tighten by 100–150 kcal; if it's dropping faster than 0.6 kg/week, add 100–150 kcal back. Don't chase the number blindly — chase the trend [cite: 1].</em></p>
+    </div>
+
+    <div class="card">
+        <h2>4. Cardio</h2>
+        <p>Goal: burn an <strong>extra ~300–400 kcal per session</strong>, 4–5x/week, without eating into recovery for calisthenics [cite: 1].</p>
+        <ul>
+            <li><strong>Incline treadmill walk:</strong> 12–15% incline, 5–5.5 km/h, 25–35 min [cite: 1]</li>
+            <li><strong>Jump rope:</strong> 3–4 rounds of 3 min work / 1 min rest (12–15 min total), lower impact fatigue but very time-efficient [cite: 1]</li>
+            <li>Place cardio <strong>after</strong> strength training or on separate light days — never before pulling/push work, since fatigued grip and shoulders sabotage pull-up quality [cite: 1].</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>5. The 6-Day Split (Mon–Sat)</h2>
+        <p>Pull days appear twice a week since the muscle-up is a pulling-strength-limited skill for most beginners at your stage [cite: 1].</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Focus</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Monday</td><td>Pull Strength + Muscle-Up Skill [cite: 1]</td></tr>
+                <tr><td>Tuesday</td><td>Push (Chest / Shoulders / Triceps) [cite: 1]</td></tr>
+                <tr><td>Wednesday</td><td>Legs + Core + Cardio [cite: 1]</td></tr>
+                <tr><td>Thursday</td><td>Pull Volume + Grip/False Grip [cite: 1]</td></tr>
+                <tr><td>Friday</td><td>Push Volume/Hypertrophy [cite: 1]</td></tr>
+                <tr><td>Saturday</td><td>Full-Body Conditioning + Skill Practice + Cardio [cite: 1]</td></tr>
+                <tr><td>Sunday</td><td>Rest [cite: 1]</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>6. Phase 1 — Foundation (Weeks 1–6)</h2>
+        <p><strong>Goal: 6–8 strict pull-ups, 8–10 dips, build general work capacity [cite: 1]</strong></p>
+        
+        <p><strong>Monday — Pull Strength [cite: 1]</strong></p>
+        <table>
+            <thead><tr><th>Exercise</th><th>Sets x Reps</th></tr></thead>
+            <tbody>
+                <tr><td>Negative pull-ups (5 sec descent)</td><td>4 x 5 [cite: 1]</td></tr>
+                <tr><td>Strict pull-ups (max effort)</td><td>4 x AMRAP [cite: 1]</td></tr>
+                <tr><td>Inverted rows (feet elevated)</td><td>3 x 10–12 [cite: 1]</td></tr>
+                <tr><td>Scapular pulls on bar</td><td>3 x 8 [cite: 1]</td></tr>
+                <tr><td>Dead hang</td><td>3 x 20–30 sec [cite: 1]</td></tr>
+            </tbody>
+        </table>
+
+        <p><strong>Tuesday — Push [cite: 1]</strong></p>
+        <table>
+            <thead><tr><th>Exercise</th><th>Sets x Reps</th></tr></thead>
+            <tbody>
+                <tr><td>Push-ups (standard/incline as needed)</td><td>4 x 12–15 [cite: 1]</td></tr>
+                <tr><td>Bench/band-assisted dips</td><td>4 x 6–10 [cite: 1]</td></tr>
+                <tr><td>Pike push-ups</td><td>3 x 10 [cite: 1]</td></tr>
+                <tr><td>Diamond push-ups</td><td>3 x 10–12 [cite: 1]</td></tr>
+                <tr><td>Plank shoulder taps</td><td>3 x 20 [cite: 1]</td></tr>
+            </tbody>
+        </table>
+
+        <p><strong>Wednesday — Legs + Core + Cardio [cite: 1]</strong></p>
+        <table>
+            <thead><tr><th>Exercise</th><th>Sets x Reps</th></tr></thead>
+            <tbody>
+                <tr><td>Bodyweight squats</td><td>4 x 15 [cite: 1]</td></tr>
+                <tr><td>Bulgarian split squats</td><td>3 x 12/leg [cite: 1]</td></tr>
+                <tr><td>Glute bridges</td><td>3 x 15 [cite: 1]</td></tr>
+                <tr><td>Hanging knee raises</td><td>3 x 10 [cite: 1]</td></tr>
+                <tr><td>Calf raises</td><td>3 x 20 [cite: 1]</td></tr>
+                <tr><td>Cardio: incline walk or rope</td><td>25 min [cite: 1]</td></tr>
+            </tbody>
+        </table>
+
+        <p><strong>Thursday — Pull Volume + Grip [cite: 1]</strong></p>
+        <table>
+            <thead><tr><th>Exercise</th><th>Sets x Reps</th></tr></thead>
+            <tbody>
+                <tr><td>Strict pull-ups (max effort)</td><td>4 x AMRAP [cite: 1]</td></tr>
+                <tr><td>Chin-ups (underhand)</td><td>3 x max [cite: 1]</td></tr>
+                <tr><td>Band pull-aparts</td><td>3 x 15 [cite: 1]</td></tr>
+                <tr><td>Farmer carry or bar hang</td><td>3 x 30 sec [cite: 1]</td></tr>
+                <tr><td>Face pulls (band)</td><td>3 x 15 [cite: 1]</td></tr>
+            </tbody>
+        </table>
+
+        <p><strong>Friday — Push Volume [cite: 1]</strong></p>
+        <table>
+            <thead><tr><th>Exercise</th><th>Sets x Reps</th></tr></thead>
+            <tbody>
+                <tr><td>Push-ups (varied angles)</td><td>4 x 12–15 [cite: 1]</td></tr>
+                <tr><td>Dips (assisted as needed)</td><td>4 x 8 [cite: 1]</td></tr>
+                <tr><td>Archer push-ups (if ready) or knee push-ups</td><td>3 x 8 [cite: 1]</td></tr>
+                <tr><td>Shoulder taps / plank complex</td><td>3 x 20 [cite: 1]</td></tr>
+            </tbody>
+        </table>
+
+        <p><strong>Saturday — Full Body + Cardio [cite: 1]</strong></p>
+        <table>
+            <thead><tr><th>Exercise</th><th>Sets x Reps</th></tr></thead>
+            <tbody>
+                <tr><td>Circuit: squats, push-ups, rows, plank</td><td>3 rounds [cite: 1]</td></tr>
+                <tr><td>Skill practice: pull-up form, dip lockout</td><td>15 min [cite: 1]</td></tr>
+                <tr><td>Cardio: rope or incline walk</td><td>20–25 min [cite: 1]</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>7. Phase 2 — Strength & Volume (Weeks 7–13)</h2>
+        <p><strong>Goal: 10–12 strict pull-ups, 10+ dips, first false-grip work [cite: 1]</strong></p>
+        
+        <p>Key changes from Phase 1 [cite: 1]:</p>
+        <ul>
+            <li>Drop the negatives — you shouldn't need them anymore [cite: 1].</li>
+            <li>Add <strong>chest-to-bar pull-ups</strong> and slow-tempo (3 sec down) reps for strength [cite: 1].</li>
+            <li>Start <strong>false-grip dead hangs</strong>: 3 x 10–15 sec, building toward 20 sec [cite: 1].</li>
+            <li>Add <strong>light weighted or backpack-loaded dips/pull-ups</strong> once bodyweight reps exceed 10 [cite: 1].</li>
+            <li>Introduce <strong>band-assisted muscle-up transitions</strong> on Monday [cite: 1].</li>
+        </ul>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Additions/changes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Monday (Pull)</td><td>Chest-to-bar pull-ups 4x6, false-grip hangs 3x10–15s, band-assisted muscle-up practice 4x3 [cite: 1]</td></tr>
+                <tr><td>Tuesday (Push)</td><td>Weighted/deficit dips 4x8, decline push-ups 3x12 [cite: 1]</td></tr>
+                <tr><td>Wednesday (Legs)</td><td>Add jump squats 3x10, weighted lunges if available [cite: 1]</td></tr>
+                <tr><td>Thursday (Pull)</td><td>Slow-tempo pull-ups 4x6 (3s down), false grip hang 3x15s, L-sit pull-ups if possible [cite: 1]</td></tr>
+                <tr><td>Friday (Push)</td><td>Ring or deep dips 4x10, pseudo-planche push-ups (progression) [cite: 1]</td></tr>
+                <tr><td>Saturday</td><td>Muscle-up transition drills 20 min + conditioning circuit [cite: 1]</td></tr>
+            </tbody>
+        </table>
+        <p><em>Everything else (sets/reps structure, cardio) stays the same as Phase 1 unless noted [cite: 1].</em></p>
+    </div>
+
+    <div class="card">
+        <h2>8. Phase 3 — Muscle-Up Specialization (Weeks 14–20)</h2>
+        <p><strong>Goal: clean, controlled muscle-up [cite: 1]</strong></p>
+        
+        <p>Key changes from Phase 2 [cite: 1]:</p>
+        <ul>
+            <li>Monday and Thursday pull days now center on <strong>transition work</strong>: negative muscle-ups from top support (3–5 sec lower), jumping muscle-ups on a low bar, band-assisted full reps [cite: 1].</li>
+            <li>Keep 1–2 sets of straight strict pull-ups and dips per week just to maintain base strength — don't abandon them [cite: 1].</li>
+            <li>By week 17–18, attempt <strong>unassisted muscle-up singles</strong> at the start of the pull session when fresh (this is a skill best trained un-fatigued) [cite: 1].</li>
+            <li>Weeks 19–20: taper training volume slightly, prioritize quality reps and rest, keep attempting clean muscle-ups 2x/week [cite: 1].</li>
+        </ul>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Focus</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Monday (Pull)</td><td>Negative muscle-ups 4x3, false-grip pull-ups 3x6, strict pull-up top-set 1x max [cite: 1]</td></tr>
+                <tr><td>Tuesday (Push)</td><td>Dip volume + lockout work, maintain strength [cite: 1]</td></tr>
+                <tr><td>Wednesday (Legs)</td><td>Maintain, don't add fatigue that affects Thursday's skill work [cite: 1]</td></tr>
+                <tr><td>Thursday (Pull)</td><td>Band-assisted muscle-ups 4x3–5, jumping muscle-ups 3x3, grip work [cite: 1]</td></tr>
+                <tr><td>Friday (Push)</td><td>Maintain push volume [cite: 1]</td></tr>
+                <tr><td>Saturday</td><td>Muscle-up attempts (fresh, early in session) + light conditioning [cite: 1]</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>9. Checkpoints (every 4 weeks)</h2>
+        <p>Re-test and log against your InBody scan [cite: 1]:</p>
+        <ul class="checkbox-list">
+            <li><label><input type="checkbox"> Max strict pull-ups [cite: 1]</label></li>
+            <li><label><input type="checkbox"> Max dips [cite: 1]</label></li>
+            <li><label><input type="checkbox"> False-grip hang time [cite: 1]</label></li>
+            <li><label><input type="checkbox"> Weight, Body Fat %, Skeletal Muscle Mass (from scan) [cite: 1]</label></li>
+            <li><label><input type="checkbox"> Adjust calories ±100–150 kcal based on actual trend, not just the plan [cite: 1]</label></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>10. Notes</h2>
+        <ul>
+            <li>Sunday is rest — actual rest, not another cardio session [cite: 1]. Recovery is where the muscle-up strength is built [cite: 1].</li>
+            <li>If a pull day leaves you too fatigued to do quality reps on the next pull day, add an extra rest day between them rather than pushing through sloppy pull-ups — form matters more than volume for skill work like this [cite: 1].</li>
+            <li>This is a general fitness program based on your data and stated goals, not medical or dietetic advice — if you have any joint issues (wrists/shoulders/elbows), get them checked before loading dips and muscle-up transitions heavily [cite: 1].</li>
+        </ul>
+    </div>
+</div>
+
 </body>
 </html>
