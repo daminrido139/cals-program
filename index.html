@@ -3,125 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>20-Week Recomposition & Muscle-Up Program</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>20-Week Calisthenics Power & Aesthetic Program</title>
     <style>
         :root {
-            --bg-color: #0b0c10;
-            --card-bg: #1f2833;
-            --text-main: #c5c6c7;
-            --text-heading: #ffffff;
-            --accent: #66fcf1;
-            --accent-muted: #45a29e;
+            --bg-main: #121212;
+            --bg-card: #1e1e1e;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --accent: #00ff88;
             --border: #333333;
-        }
-        
-        * {
-            box-sizing: border-box;
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: var(--bg-main);
             color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.7;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
             margin: 0;
-            padding: 40px 20px;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
         header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         h1 {
             color: var(--accent);
-            font-size: 2.8em;
-            font-weight: 800;
+            font-size: 2.2rem;
             margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 0 0 20px rgba(102, 252, 241, 0.3);
         }
 
-        .subtitle {
-            font-size: 1.1em;
-            color: var(--text-heading);
-            background: rgba(31, 40, 51, 0.8);
-            display: inline-block;
-            padding: 10px 25px;
-            border-radius: 30px;
-            border: 1px solid var(--accent-muted);
+        .stats-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            background: var(--bg-card);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            font-weight: bold;
         }
 
         h2 {
-            color: var(--text-heading);
-            font-size: 1.6em;
-            margin-top: 0;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
+            color: var(--accent);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 8px;
+            margin-top: 40px;
         }
 
-        h2::before {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 24px;
-            background-color: var(--accent);
-            margin-right: 12px;
-            border-radius: 3px;
+        h3 {
+            color: #ffffff;
+            margin-top: 25px;
         }
 
         .card {
-            background: var(--card-bg);
-            padding: 35px;
-            border-radius: 16px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.2s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(102, 252, 241, 0.2);
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin: 15px 0;
+            background-color: var(--bg-main);
             border-radius: 8px;
             overflow: hidden;
         }
 
         th, td {
-            padding: 15px;
+            padding: 12px 15px;
             text-align: left;
             border-bottom: 1px solid var(--border);
         }
 
         th {
-            background-color: rgba(102, 252, 241, 0.08);
+            background-color: #2a2a2a;
             color: var(--accent);
             font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.85em;
-            letter-spacing: 0.5px;
         }
 
         tr:last-child td {
             border-bottom: none;
-        }
-
-        tr:hover td {
-            background-color: rgba(255, 255, 255, 0.02);
         }
 
         ul, ol {
@@ -129,324 +102,262 @@
         }
 
         li {
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
-        strong {
-            color: var(--text-heading);
-            font-weight: 600;
+        .cite {
+            font-size: 0.75rem;
+            color: #666;
+            vertical-align: super;
+            margin-left: 4px;
         }
 
-        .highlight {
-            color: var(--accent);
-            font-weight: bold;
-        }
-        
-        .checkbox-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .checkbox-list li {
-            display: flex;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 12px 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            border: 1px solid var(--border);
-        }
-        
-        .checkbox-list input[type="checkbox"] {
-            margin-right: 15px;
-            width: 18px;
-            height: 18px;
-            accent-color: var(--accent);
-            cursor: pointer;
-        }
-
+        /* Mobile Responsiveness for Tables */
         @media (max-width: 600px) {
-            .card { padding: 20px; }
-            h1 { font-size: 2em; }
-            th, td { padding: 10px; font-size: 0.9em; }
+            h1 { font-size: 1.8rem; }
+            
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            
+            tr {
+                border: 1px solid var(--border);
+                margin-bottom: 15px;
+                border-radius: 8px;
+            }
+            
+            td {
+                border: none;
+                border-bottom: 1px solid var(--border);
+                position: relative;
+                padding-left: 50%;
+            }
+            
+            td:before {
+                position: absolute;
+                top: 12px;
+                left: 15px;
+                width: 40%;
+                padding-right: 10px;
+                white-space: nowrap;
+                font-weight: bold;
+                color: var(--accent);
+                content: attr(data-label);
+            }
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>20-Week Calisthenics Power & Aesthetic Program <span class="cite">[cite: 1]</span></h1>
+            <div class="stats-bar">
+                <span>Age: 21 <span class="cite">[cite: 1]</span></span> | 
+                <span>Height: 167 cm <span class="cite">[cite: 1]</span></span> | 
+                <span>Start Date: July 13, 2026 <span class="cite">[cite: 1]</span></span> | 
+                <span>End Date: ~Dec 7, 2026 <span class="cite">[cite: 1]</span></span>
+            </div>
+        </header>
 
-<div class="container">
-    <header>
-        <h1>20-Week Recomposition & Muscle-Up Program</h1>
-        <div class="subtitle">
-            <strong>Prepared for:</strong> Damin | 167 cm | 21 y/o | Starting weight 68.1 kg | Starting BF 26.3% [cite: 1]
-        </div>
-    </header>
+        <section class="card">
+            <h2>1. Where You Actually Stand (InBody, July 13, 2026) <span class="cite">[cite: 1]</span></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td data-label="Metric">Weight</td><td data-label="Value">68.1 kg <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Metric">Body Fat %</td><td data-label="Value">26.3% <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Metric">Fat Mass</td><td data-label="Value">17.9 kg <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Metric">Lean (Fat-Free) Mass</td><td data-label="Value">50.2 kg <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Metric">Skeletal Muscle Mass</td><td data-label="Value">28.3 kg <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Metric">BMR (measured)</td><td data-label="Value">1454 kcal <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Metric">SMI (muscle index)</td><td data-label="Value">7.5 kg/m² — below-average, room to build <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Metric">Waist-Hip Ratio</td><td data-label="Value">0.91 — slightly high, worth tracking down <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Metric">Visceral Fat Level</td><td data-label="Value">7 (normal range is 1–9, but you're near the top of it) <span class="cite">[cite: 1]</span></td></tr>
+                </tbody>
+            </table>
+            <p>Your last month of scans (June 14 – July 13) bounced between 23.9% and 27.7% body fat with no clear downward trend — flat, not because your body resists fat loss, but because training/diet consistency wasn't there. <span class="cite">[cite: 1]</span> That's fixable. <span class="cite">[cite: 1]</span> The physiology isn't the problem. <span class="cite">[cite: 1]</span></p>
+        </section>
 
-    <div class="card">
-        <h2>1. Where You're Actually Starting (from your InBody data)</h2>
-        <p>Your last 9 scans (Jun 14 – Jul 13) show weight bouncing between <strong>67.7–69.6 kg</strong> and body fat between <strong>23.9–27.7%</strong>, with skeletal muscle mass flat at <strong>~28–29 kg</strong> [cite: 1]. That's a classic "inconsistent" pattern — no net progress either way [cite: 1]. Good news: nothing has been lost, so we're not starting from a hole [cite: 1].</p>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>Metric</th>
-                    <th>Value (Jul 13 scan)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>Weight</td><td>68.1 kg [cite: 1]</td></tr>
-                <tr><td>Body Fat %</td><td>26.3% [cite: 1]</td></tr>
-                <tr><td>Fat Mass</td><td>17.9 kg [cite: 1]</td></tr>
-                <tr><td>Lean Body Mass</td><td>50.2 kg [cite: 1]</td></tr>
-                <tr><td>Skeletal Muscle Mass</td><td>28.3 kg [cite: 1]</td></tr>
-                <tr><td>BMR (measured, lean-mass based)</td><td>1454 kcal [cite: 1]</td></tr>
-                <tr><td>BMI</td><td>24.4 [cite: 1]</td></tr>
-            </tbody>
-        </table>
+        <section class="card">
+            <h2>2. The Goal — Straight Talk <span class="cite">[cite: 1]</span></h2>
+            <p><strong>Target: 26.3% → 12% body fat in 20 weeks. <span class="cite">[cite: 1]</span></strong></p>
+            <p>Here's the honest version: this is aggressive, not impossible. <span class="cite">[cite: 1]</span> To hit 12% while keeping (and slightly building) muscle, you need roughly <strong>10–11 kg of fat loss</strong> in 140 days — about <strong>0.5–0.6 kg/week</strong>, sustained without major breaks. <span class="cite">[cite: 1]</span> That's on the upper edge of what's sustainable for someone your size (68 kg). <span class="cite">[cite: 1]</span> It is achievable if: <span class="cite">[cite: 1]</span></p>
+            <ul>
+                <li>Diet adherence is close to 100%, not "most days" <span class="cite">[cite: 1]</span></li>
+                <li>Training is consistent — no multi-week gaps like your last month <span class="cite">[cite: 1]</span></li>
+                <li>You track weekly average weight, not daily noise <span class="cite">[cite: 1]</span></li>
+            </ul>
+            <p>If you nail this, expect to land at <strong>58–60 kg</strong> somewhere around <strong>12–14% body fat</strong>, with visibly more muscle than you have now (because you'll be building some of it concurrently — a real advantage of being a beginner-to-intermediate lifter). <span class="cite">[cite: 1]</span> Landing at exactly 12.0% is a stretch goal, not a promise — but it's the number we're building the plan around. <span class="cite">[cite: 1]</span></p>
+        </section>
+
+        <section class="card">
+            <h2>3. The Calorie Math <span class="cite">[cite: 1]</span></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>kcal/day</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td data-label="Metric">BMR (InBody measured)</td><td data-label="kcal/day">1454 <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Metric">Estimated Maintenance (TDEE)*</td><td data-label="kcal/day">~2100 <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Metric"><strong>Target intake (diet)</strong></td><td data-label="kcal/day"><strong>1700–1750</strong> <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Metric">Extra burn target (cardio/steps)</td><td data-label="kcal/day">250–300 <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Metric"><strong>Total daily deficit</strong></td><td data-label="kcal/day"><strong>~600–650</strong> <span class="cite">[cite: 1]</span></td></tr>
+                </tbody>
+            </table>
+            <p><em>*TDEE estimated at BMR × 1.45 (sedentary desk job + 5–6 calisthenics sessions/week). <span class="cite">[cite: 1]</span> This is an estimate — see Section 9 to correct it with real data after 2 weeks. <span class="cite">[cite: 1]</span></em></p>
+            <p><strong>Why split the deficit between diet and cardio instead of just eating 1500? <span class="cite">[cite: 1]</span></strong> Dropping straight to 1500 kcal while training 6x/week hard for pull-ups/muscle-ups will tank your recovery and strength progress. <span class="cite">[cite: 1]</span> Splitting it keeps training quality high and is easier to sustain for 20 straight weeks. <span class="cite">[cite: 1]</span></p>
+            
+            <h3>Daily Macro Targets (~1750 kcal) <span class="cite">[cite: 1]</span></h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Macro</th>
+                        <th>Amount</th>
+                        <th>Calories</th>
+                        <th>%</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td data-label="Macro">Protein</td><td data-label="Amount">145 g <span class="cite">[cite: 1]</span></td><td data-label="Calories">580 <span class="cite">[cite: 1]</span></td><td data-label="%">33% <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Macro">Carbs</td><td data-label="Amount">170 g <span class="cite">[cite: 1]</span></td><td data-label="Calories">680 <span class="cite">[cite: 1]</span></td><td data-label="%">39% <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Macro">Fat</td><td data-label="Amount">55 g <span class="cite">[cite: 1]</span></td><td data-label="Calories">495 <span class="cite">[cite: 1]</span></td><td data-label="%">28% <span class="cite">[cite: 1]</span></td></tr>
+                </tbody>
+            </table>
+            <p>Protein target is ~2.1 g/kg bodyweight — high enough to protect muscle and support new growth in a deficit. <span class="cite">[cite: 1]</span> Non-negotiable macro; carbs/fat can flex around it. <span class="cite">[cite: 1]</span></p>
+        </section>
+
+        <section class="card">
+            <h2>4. Weekly Training Split (6 days on, 1 rest) <span class="cite">[cite: 1]</span></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Focus</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td data-label="Day">Mon</td><td data-label="Focus">Pull Power + Pull-up Progression <span class="cite">[cite: 1]</span></td><td data-label="Duration">60–70 min <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Day">Tue</td><td data-label="Focus">Push Power (Chest/Shoulders/Triceps) <span class="cite">[cite: 1]</span></td><td data-label="Duration">60 min <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Day">Wed</td><td data-label="Focus">Legs + Core + 20 min LISS cardio <span class="cite">[cite: 1]</span></td><td data-label="Duration">60 min <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Day">Thu</td><td data-label="Focus">Active Recovery — mobility, light skill work, 30–40 min walk <span class="cite">[cite: 1]</span></td><td data-label="Duration">30–45 min <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Day">Fri</td><td data-label="Focus">Pull Power 2 — volume + muscle-up transition drills <span class="cite">[cite: 1]</span></td><td data-label="Duration">60–70 min <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Day">Sat</td><td data-label="Focus">Push Power 2 + Core/Aesthetics finisher <span class="cite">[cite: 1]</span></td><td data-label="Duration">60 min <span class="cite">[cite: 1]</span></td></tr>
+                    <tr><td data-label="Day">Sun</td><td data-label="Focus">Full Rest <span class="cite">[cite: 1]</span></td><td data-label="Duration">— <span class="cite">[cite: 1]</span></td></tr>
+                </tbody>
+            </table>
+            <p><strong>Daily add-on (every non-heavy-pull day):</strong> "Grease the groove" — 5 sets of pull-ups at 3 reps below your max, spread across the day, 3–5 hours apart. <span class="cite">[cite: 1]</span> This is the single best lever for taking you from 2–3 reps to 8+ reps fast, and it stacks on top of your programmed sessions without adding fatigue. <span class="cite">[cite: 1]</span></p>
+        </section>
+
+        <section class="card">
+            <h2>5. The Path to Your First Muscle-Up (4 Phases) <span class="cite">[cite: 1]</span></h2>
+            
+            <h3>Phase 1 — Foundation (Weeks 1–4) <span class="cite">[cite: 1]</span></h3>
+            <p>Goal: 4–5 strict pull-ups, clean full dips, training habit locked in. <span class="cite">[cite: 1]</span></p>
+            <ul>
+                <li>Pull-ups: negatives (5-sec lower) 4×5, band-assisted or machine-assisted 4×8-10, scap pulls 3×10, dead hangs 3×30-45s <span class="cite">[cite: 1]</span></li>
+                <li>Dips: assisted/bench dips → full dips, 4×8-10 <span class="cite">[cite: 1]</span></li>
+                <li>Gym accessory (hypertrophy): lat pulldown, seated row, incline DB press, lateral raises — 3×10-12 each <span class="cite">[cite: 1]</span></li>
+                <li>Legs: goblet squat or leg press, RDL, walking lunges — 3×10-12 <span class="cite">[cite: 1]</span></li>
+                <li>Core: hollow hold, plank, hanging knee raise — 3×30-45s or 12-15 reps <span class="cite">[cite: 1]</span></li>
+            </ul>
+
+            <h3>Phase 2 — Strength & Volume (Weeks 5–10) <span class="cite">[cite: 1]</span></h3>
+            <p>Goal: 8 strict pull-ups, 15+ dips, 3-5 chest-to-bar reps. <span class="cite">[cite: 1]</span></p>
+            <ul>
+                <li>Pull-ups: max-effort sets 5×5 @ RPE8, add small weight once 8+ reps unassisted is easy <span class="cite">[cite: 1]</span></li>
+                <li>Dips: push to 15-20 reps, begin light weighted dips <span class="cite">[cite: 1]</span></li>
+                <li>Add tuck L-sit holds (3×15-20s) — core compression strength needed for the muscle-up <span class="cite">[cite: 1]</span></li>
+                <li>Explosive/chest-to-bar pull-ups 3×5 for power <span class="cite">[cite: 1]</span></li>
+                <li>Continue gym hypertrophy work for shoulders/arms/back thickness <span class="cite">[cite: 1]</span></li>
+            </ul>
+
+            <h3>Phase 3 — Muscle-Up Transition (Weeks 11–16) <span class="cite">[cite: 1]</span></h3>
+            <p>Goal: first muscle-up (band-assisted is a completely valid milestone). <span class="cite">[cite: 1]</span></p>
+            <ul>
+                <li>False grip hangs 3×20-30s — this is the technical key most people skip <span class="cite">[cite: 1]</span></li>
+                <li>Muscle-up transition drills (jump negatives, band-assisted reps) <span class="cite">[cite: 1]</span></li>
+                <li>Chest-to-bar pull-ups 4×3-5, aiming for higher pull each week <span class="cite">[cite: 1]</span></li>
+                <li>Advanced L-sit progression, tuck front lever holds <span class="cite">[cite: 1]</span></li>
+                <li>Weighted dips continue progressing <span class="cite">[cite: 1]</span></li>
+            </ul>
+
+            <h3>Phase 4 — Peak & Polish (Weeks 17-20) <span class="cite">[cite: 1]</span></h3>
+            <p>Goal: strict muscle-up reps, finish the cut looking sharp. <span class="cite">[cite: 1]</span></p>
+            <ul>
+                <li>Strict muscle-up practice, build toward multiple reps <span class="cite">[cite: 1]</span></li>
+                <li>Aesthetic finishers: arm/shoulder isolation work, ab circuits <span class="cite">[cite: 1]</span></li>
+                <li>Cardio finishers 2x/week if fat loss has stalled <span class="cite">[cite: 1]</span></li>
+                <li><strong>Week 19 or 20: deload</strong> — cut volume ~40-50% to arrive fresh for your final assessment <span class="cite">[cite: 1]</span></li>
+                <li>Final InBody scan + photos, week 20 <span class="cite">[cite: 1]</span></li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>6. Nutrition — Practical, Indian, Non-Veg <span class="cite">[cite: 1]</span></h2>
+            <p><strong>Protein sources to hit 145g/day:</strong> eggs (whole + whites), chicken breast, fish, paneer, dal, curd/Greek-style yogurt, whey if you use it. <span class="cite">[cite: 1]</span></p>
+            <p><strong>Sample day (~1750 kcal, ~145g protein): <span class="cite">[cite: 1]</span></strong></p>
+            <ul>
+                <li>Breakfast: 4 egg whites + 2 whole eggs, 2 slices whole wheat toast <span class="cite">[cite: 1]</span></li>
+                <li>Lunch: 150g grilled chicken breast, 1 cup brown rice, mixed vegetable sabzi <span class="cite">[cite: 1]</span></li>
+                <li>Snack: 200g curd + a fruit <span class="cite">[cite: 1]</span></li>
+                <li>Dinner: 150g fish or paneer, 2 rotis, dal, salad <span class="cite">[cite: 1]</span></li>
+                <li>Adjust rice/roti portions up or down to hit your daily calorie number. <span class="cite">[cite: 1]</span></li>
+            </ul>
+            <p>Hydration and fiber (vegetables, fruit) matter more than usual in a deficit — they keep hunger manageable. <span class="cite">[cite: 1]</span></p>
+        </section>
+
+        <section class="card">
+            <h2>7. Cardio & NEAT <span class="cite">[cite: 1]</span></h2>
+            <ul>
+                <li>Daily steps target: 8,000–10,000 (this alone often covers most of your "extra 250-300 kcal burn" target) <span class="cite">[cite: 1]</span></li>
+                <li>Optional 2x/week: 20-30 min incline walk or cycling if fat loss stalls for 2+ weeks straight <span class="cite">[cite: 1]</span></li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>8. Tracking & Adjustment Protocol (Important — Don't Skip) <span class="cite">[cite: 1]</span></h2>
+            <ol>
+                <li>Weigh yourself daily, same time, same conditions (morning, after washroom, before food). <span class="cite">[cite: 1]</span> Track the <strong>weekly average</strong>, not single-day numbers. <span class="cite">[cite: 1]</span></li>
+                <li>InBody scan every 2 weeks (you clearly have easy access — use it). <span class="cite">[cite: 1]</span></li>
+                <li>If weekly average isn't dropping ~0.4-0.6 kg for 2 straight weeks → cut 100-150 kcal from intake. <span class="cite">[cite: 1]</span></li>
+                <li>If you're dropping faster than 0.8 kg/week → add 100-150 kcal back. <span class="cite">[cite: 1]</span> Fast loss at your bodyweight risks muscle loss, not just fat. <span class="cite">[cite: 1]</span></li>
+                <li>Every 4 weeks, reassess pull-up/dip numbers and adjust phase progression up or down based on actual performance, not the calendar. <span class="cite">[cite: 1]</span></li>
+            </ol>
+        </section>
+
+        <section class="card">
+            <h2>9. Recovery <span class="cite">[cite: 1]</span></h2>
+            <ul>
+                <li>Sleep: 7-8 hours minimum — this is not optional in a deficit while building strength; skimping here undercuts both fat loss and recovery. <span class="cite">[cite: 1]</span></li>
+                <li>Full rest day (Sunday) stays a full rest day even when motivated — recovery is where the muscle-up strength actually gets built. <span class="cite">[cite: 1]</span></li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>10. Bottom Line <span class="cite">[cite: 1]</span></h2>
+            <ul>
+                <li><strong>Eat:</strong> ~1700-1750 kcal/day, 145g protein minimum <span class="cite">[cite: 1]</span></li>
+                <li><strong>Burn:</strong> extra 250-300 kcal via daily steps/cardio on top of training <span class="cite">[cite: 1]</span></li>
+                <li><strong>Train:</strong> 6 days/week per the split above, pull-focused frequency for skill work <span class="cite">[cite: 1]</span></li>
+                <li><strong>Track:</strong> weekly average weight + biweekly InBody, adjust every 2-4 weeks based on real data, not hope <span class="cite">[cite: 1]</span></li>
+            </ul>
+            <p>The plan gets you to a genuinely different physique and strength level in 20 weeks. <span class="cite">[cite: 1]</span> Whether the scale reads exactly 12.0% or 13.5% at the end matters far less than whether you're still consistent in week 18 — that's the actual variable in your control. <span class="cite">[cite: 1]</span></p>
+        </section>
     </div>
-
-    <div class="card">
-        <h2>2. Is 26% → 15% BF in 20 weeks realistic?</h2>
-        <p>Yes — and it's actually a conservative target, not an aggressive one [cite: 1]. Here's the math [cite: 1]:</p>
-        <ul>
-            <li>If your lean mass stays roughly where it is (or grows slightly from training), hitting 15% BF means a bodyweight of <strong>~59–61 kg</strong> [cite: 1].</li>
-            <li>That means losing <strong>~8.5–9 kg of fat mass</strong> over 20 weeks = <strong>~0.45 kg/week</strong> (~1 lb/week) [cite: 1].</li>
-            <li>0.45 kg/week is a gentle, muscle-sparing rate of fat loss — well within what's achievable with a moderate deficit + resistance training + high protein, and it leaves plenty of room for beginner muscle gain ("newbie gains") to happen at the same time [cite: 1]. This is a genuine recomposition, not just a cut [cite: 1].</li>
-        </ul>
-        <p>The muscle-up is the more skill-dependent goal, but 20 weeks is a realistic runway from 2–3 strict pull-ups if you're consistent — see the phased plan below [cite: 1].</p>
-    </div>
-
-    <div class="card">
-        <h2>3. Calories & Macros</h2>
-        <p><strong>Maintenance (TDEE) estimate:</strong> Your BMR of 1454 kcal is measured from actual lean mass (this is the Katch-McArdle formula, and it checks out — more reliable for you than a generic age/height formula) [cite: 1]. With a desk job during the day plus structured training 6x/week and dedicated cardio [cite: 1]:</p>
-        <p><strong class="highlight" style="font-size: 1.2em;">Maintenance ≈ 2,250 kcal/day [cite: 1]</strong></p>
-        <p><strong>Target deficit:</strong> ~450–500 kcal/day → <strong>Target intake ≈ 1,750–1,800 kcal/day</strong> on average [cite: 1].</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Day type</th>
-                    <th>Calories</th>
-                    <th>Why</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>Training days</td><td>~1,900–2,000 kcal [cite: 1]</td><td>Fuel the session, protect performance [cite: 1]</td></tr>
-                <tr><td>Rest days</td><td>~1,600–1,700 kcal [cite: 1]</td><td>Lower activity, bigger deficit here [cite: 1]</td></tr>
-                <tr><td><strong>Weekly average</strong></td><td><strong class="highlight">~1,780 kcal</strong> [cite: 1]</td><td>Matches the ~500 kcal/day deficit needed [cite: 1]</td></tr>
-            </tbody>
-        </table>
-
-        <p><strong>Macro targets (~1,780 kcal average day) [cite: 1]:</strong></p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Macro</th>
-                    <th>Amount</th>
-                    <th>Calories</th>
-                    <th>Notes</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>Protein</td><td>150 g (~2.2 g/kg) [cite: 1]</td><td>~600 kcal [cite: 1]</td><td>Non-negotiable — this is what protects/builds muscle in a deficit. Eggs, chicken, fish, paneer, curd, dal all work well [cite: 1]</td></tr>
-                <tr><td>Fat</td><td>55 g [cite: 1]</td><td>~495 kcal [cite: 1]</td><td>Don't go lower — needed for hormones [cite: 1]</td></tr>
-                <tr><td>Carbs</td><td>~165 g [cite: 1]</td><td>~660 kcal [cite: 1]</td><td>Fuel training, time more of it around workouts [cite: 1]</td></tr>
-            </tbody>
-        </table>
-        
-        <p><em><strong>Important:</strong> These numbers are estimates based on formulas, not lab-measured TDEE. Re-check every 3–4 weeks: if weight/BF% (from your InBody scans) isn't trending down, tighten by 100–150 kcal; if it's dropping faster than 0.6 kg/week, add 100–150 kcal back. Don't chase the number blindly — chase the trend [cite: 1].</em></p>
-    </div>
-
-    <div class="card">
-        <h2>4. Cardio</h2>
-        <p>Goal: burn an <strong>extra ~300–400 kcal per session</strong>, 4–5x/week, without eating into recovery for calisthenics [cite: 1].</p>
-        <ul>
-            <li><strong>Incline treadmill walk:</strong> 12–15% incline, 5–5.5 km/h, 25–35 min [cite: 1]</li>
-            <li><strong>Jump rope:</strong> 3–4 rounds of 3 min work / 1 min rest (12–15 min total), lower impact fatigue but very time-efficient [cite: 1]</li>
-            <li>Place cardio <strong>after</strong> strength training or on separate light days — never before pulling/push work, since fatigued grip and shoulders sabotage pull-up quality [cite: 1].</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h2>5. The 6-Day Split (Mon–Sat)</h2>
-        <p>Pull days appear twice a week since the muscle-up is a pulling-strength-limited skill for most beginners at your stage [cite: 1].</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Day</th>
-                    <th>Focus</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>Monday</td><td>Pull Strength + Muscle-Up Skill [cite: 1]</td></tr>
-                <tr><td>Tuesday</td><td>Push (Chest / Shoulders / Triceps) [cite: 1]</td></tr>
-                <tr><td>Wednesday</td><td>Legs + Core + Cardio [cite: 1]</td></tr>
-                <tr><td>Thursday</td><td>Pull Volume + Grip/False Grip [cite: 1]</td></tr>
-                <tr><td>Friday</td><td>Push Volume/Hypertrophy [cite: 1]</td></tr>
-                <tr><td>Saturday</td><td>Full-Body Conditioning + Skill Practice + Cardio [cite: 1]</td></tr>
-                <tr><td>Sunday</td><td>Rest [cite: 1]</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="card">
-        <h2>6. Phase 1 — Foundation (Weeks 1–6)</h2>
-        <p><strong>Goal: 6–8 strict pull-ups, 8–10 dips, build general work capacity [cite: 1]</strong></p>
-        
-        <p><strong>Monday — Pull Strength [cite: 1]</strong></p>
-        <table>
-            <thead><tr><th>Exercise</th><th>Sets x Reps</th></tr></thead>
-            <tbody>
-                <tr><td>Negative pull-ups (5 sec descent)</td><td>4 x 5 [cite: 1]</td></tr>
-                <tr><td>Strict pull-ups (max effort)</td><td>4 x AMRAP [cite: 1]</td></tr>
-                <tr><td>Inverted rows (feet elevated)</td><td>3 x 10–12 [cite: 1]</td></tr>
-                <tr><td>Scapular pulls on bar</td><td>3 x 8 [cite: 1]</td></tr>
-                <tr><td>Dead hang</td><td>3 x 20–30 sec [cite: 1]</td></tr>
-            </tbody>
-        </table>
-
-        <p><strong>Tuesday — Push [cite: 1]</strong></p>
-        <table>
-            <thead><tr><th>Exercise</th><th>Sets x Reps</th></tr></thead>
-            <tbody>
-                <tr><td>Push-ups (standard/incline as needed)</td><td>4 x 12–15 [cite: 1]</td></tr>
-                <tr><td>Bench/band-assisted dips</td><td>4 x 6–10 [cite: 1]</td></tr>
-                <tr><td>Pike push-ups</td><td>3 x 10 [cite: 1]</td></tr>
-                <tr><td>Diamond push-ups</td><td>3 x 10–12 [cite: 1]</td></tr>
-                <tr><td>Plank shoulder taps</td><td>3 x 20 [cite: 1]</td></tr>
-            </tbody>
-        </table>
-
-        <p><strong>Wednesday — Legs + Core + Cardio [cite: 1]</strong></p>
-        <table>
-            <thead><tr><th>Exercise</th><th>Sets x Reps</th></tr></thead>
-            <tbody>
-                <tr><td>Bodyweight squats</td><td>4 x 15 [cite: 1]</td></tr>
-                <tr><td>Bulgarian split squats</td><td>3 x 12/leg [cite: 1]</td></tr>
-                <tr><td>Glute bridges</td><td>3 x 15 [cite: 1]</td></tr>
-                <tr><td>Hanging knee raises</td><td>3 x 10 [cite: 1]</td></tr>
-                <tr><td>Calf raises</td><td>3 x 20 [cite: 1]</td></tr>
-                <tr><td>Cardio: incline walk or rope</td><td>25 min [cite: 1]</td></tr>
-            </tbody>
-        </table>
-
-        <p><strong>Thursday — Pull Volume + Grip [cite: 1]</strong></p>
-        <table>
-            <thead><tr><th>Exercise</th><th>Sets x Reps</th></tr></thead>
-            <tbody>
-                <tr><td>Strict pull-ups (max effort)</td><td>4 x AMRAP [cite: 1]</td></tr>
-                <tr><td>Chin-ups (underhand)</td><td>3 x max [cite: 1]</td></tr>
-                <tr><td>Band pull-aparts</td><td>3 x 15 [cite: 1]</td></tr>
-                <tr><td>Farmer carry or bar hang</td><td>3 x 30 sec [cite: 1]</td></tr>
-                <tr><td>Face pulls (band)</td><td>3 x 15 [cite: 1]</td></tr>
-            </tbody>
-        </table>
-
-        <p><strong>Friday — Push Volume [cite: 1]</strong></p>
-        <table>
-            <thead><tr><th>Exercise</th><th>Sets x Reps</th></tr></thead>
-            <tbody>
-                <tr><td>Push-ups (varied angles)</td><td>4 x 12–15 [cite: 1]</td></tr>
-                <tr><td>Dips (assisted as needed)</td><td>4 x 8 [cite: 1]</td></tr>
-                <tr><td>Archer push-ups (if ready) or knee push-ups</td><td>3 x 8 [cite: 1]</td></tr>
-                <tr><td>Shoulder taps / plank complex</td><td>3 x 20 [cite: 1]</td></tr>
-            </tbody>
-        </table>
-
-        <p><strong>Saturday — Full Body + Cardio [cite: 1]</strong></p>
-        <table>
-            <thead><tr><th>Exercise</th><th>Sets x Reps</th></tr></thead>
-            <tbody>
-                <tr><td>Circuit: squats, push-ups, rows, plank</td><td>3 rounds [cite: 1]</td></tr>
-                <tr><td>Skill practice: pull-up form, dip lockout</td><td>15 min [cite: 1]</td></tr>
-                <tr><td>Cardio: rope or incline walk</td><td>20–25 min [cite: 1]</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="card">
-        <h2>7. Phase 2 — Strength & Volume (Weeks 7–13)</h2>
-        <p><strong>Goal: 10–12 strict pull-ups, 10+ dips, first false-grip work [cite: 1]</strong></p>
-        
-        <p>Key changes from Phase 1 [cite: 1]:</p>
-        <ul>
-            <li>Drop the negatives — you shouldn't need them anymore [cite: 1].</li>
-            <li>Add <strong>chest-to-bar pull-ups</strong> and slow-tempo (3 sec down) reps for strength [cite: 1].</li>
-            <li>Start <strong>false-grip dead hangs</strong>: 3 x 10–15 sec, building toward 20 sec [cite: 1].</li>
-            <li>Add <strong>light weighted or backpack-loaded dips/pull-ups</strong> once bodyweight reps exceed 10 [cite: 1].</li>
-            <li>Introduce <strong>band-assisted muscle-up transitions</strong> on Monday [cite: 1].</li>
-        </ul>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Day</th>
-                    <th>Additions/changes</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>Monday (Pull)</td><td>Chest-to-bar pull-ups 4x6, false-grip hangs 3x10–15s, band-assisted muscle-up practice 4x3 [cite: 1]</td></tr>
-                <tr><td>Tuesday (Push)</td><td>Weighted/deficit dips 4x8, decline push-ups 3x12 [cite: 1]</td></tr>
-                <tr><td>Wednesday (Legs)</td><td>Add jump squats 3x10, weighted lunges if available [cite: 1]</td></tr>
-                <tr><td>Thursday (Pull)</td><td>Slow-tempo pull-ups 4x6 (3s down), false grip hang 3x15s, L-sit pull-ups if possible [cite: 1]</td></tr>
-                <tr><td>Friday (Push)</td><td>Ring or deep dips 4x10, pseudo-planche push-ups (progression) [cite: 1]</td></tr>
-                <tr><td>Saturday</td><td>Muscle-up transition drills 20 min + conditioning circuit [cite: 1]</td></tr>
-            </tbody>
-        </table>
-        <p><em>Everything else (sets/reps structure, cardio) stays the same as Phase 1 unless noted [cite: 1].</em></p>
-    </div>
-
-    <div class="card">
-        <h2>8. Phase 3 — Muscle-Up Specialization (Weeks 14–20)</h2>
-        <p><strong>Goal: clean, controlled muscle-up [cite: 1]</strong></p>
-        
-        <p>Key changes from Phase 2 [cite: 1]:</p>
-        <ul>
-            <li>Monday and Thursday pull days now center on <strong>transition work</strong>: negative muscle-ups from top support (3–5 sec lower), jumping muscle-ups on a low bar, band-assisted full reps [cite: 1].</li>
-            <li>Keep 1–2 sets of straight strict pull-ups and dips per week just to maintain base strength — don't abandon them [cite: 1].</li>
-            <li>By week 17–18, attempt <strong>unassisted muscle-up singles</strong> at the start of the pull session when fresh (this is a skill best trained un-fatigued) [cite: 1].</li>
-            <li>Weeks 19–20: taper training volume slightly, prioritize quality reps and rest, keep attempting clean muscle-ups 2x/week [cite: 1].</li>
-        </ul>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Day</th>
-                    <th>Focus</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td>Monday (Pull)</td><td>Negative muscle-ups 4x3, false-grip pull-ups 3x6, strict pull-up top-set 1x max [cite: 1]</td></tr>
-                <tr><td>Tuesday (Push)</td><td>Dip volume + lockout work, maintain strength [cite: 1]</td></tr>
-                <tr><td>Wednesday (Legs)</td><td>Maintain, don't add fatigue that affects Thursday's skill work [cite: 1]</td></tr>
-                <tr><td>Thursday (Pull)</td><td>Band-assisted muscle-ups 4x3–5, jumping muscle-ups 3x3, grip work [cite: 1]</td></tr>
-                <tr><td>Friday (Push)</td><td>Maintain push volume [cite: 1]</td></tr>
-                <tr><td>Saturday</td><td>Muscle-up attempts (fresh, early in session) + light conditioning [cite: 1]</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="card">
-        <h2>9. Checkpoints (every 4 weeks)</h2>
-        <p>Re-test and log against your InBody scan [cite: 1]:</p>
-        <ul class="checkbox-list">
-            <li><label><input type="checkbox"> Max strict pull-ups [cite: 1]</label></li>
-            <li><label><input type="checkbox"> Max dips [cite: 1]</label></li>
-            <li><label><input type="checkbox"> False-grip hang time [cite: 1]</label></li>
-            <li><label><input type="checkbox"> Weight, Body Fat %, Skeletal Muscle Mass (from scan) [cite: 1]</label></li>
-            <li><label><input type="checkbox"> Adjust calories ±100–150 kcal based on actual trend, not just the plan [cite: 1]</label></li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h2>10. Notes</h2>
-        <ul>
-            <li>Sunday is rest — actual rest, not another cardio session [cite: 1]. Recovery is where the muscle-up strength is built [cite: 1].</li>
-            <li>If a pull day leaves you too fatigued to do quality reps on the next pull day, add an extra rest day between them rather than pushing through sloppy pull-ups — form matters more than volume for skill work like this [cite: 1].</li>
-            <li>This is a general fitness program based on your data and stated goals, not medical or dietetic advice — if you have any joint issues (wrists/shoulders/elbows), get them checked before loading dips and muscle-up transitions heavily [cite: 1].</li>
-        </ul>
-    </div>
-</div>
-
 </body>
 </html>
