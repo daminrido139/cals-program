@@ -1,518 +1,652 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CALI-POWER: 20-Week Transformation Portal</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                    },
-                    colors: {
-                        brand: {
-                            gold: '#D4AF37',
-                            neon: '#CCFF00',
-                            charcoal: '#0D0E12',
-                            card: '#16181F',
-                            muted: '#9CA3AF',
-                            accent: '#3B82F6',
-                            emerald: '#10B981'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <title>20-Week Calisthenics + Strength Recomposition Program</title>
     <style>
-        ::-webkit-scrollbar {
-            width: 8px;
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #151515;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --accent: #00ffcc; /* Aesthetic cyan */
+            --border: #2a2a2a;
         }
-        ::-webkit-scrollbar-track {
-            background: #0D0E12;
+
+        html {
+            scroll-behavior: smooth;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #1F2937;
-            border-radius: 4px;
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #374151;
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px 20px 60px 20px;
         }
-        .glow-gold:hover {
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+
+        /* Sticky Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--bg-dark);
+            background-color: var(--accent);
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--accent);
+            text-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+            margin-top: 50px;
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            color: var(--accent);
+            margin-top: 40px;
+            scroll-margin-top: 80px; /* Accounts for sticky nav */
+            font-size: 1.3rem;
+        }
+
+        p, li {
+            color: var(--text-muted);
+        }
+
+        strong {
+            color: #ffffff;
+        }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--bg-card);
+            text-align: left;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: #1e1e1e;
+        }
+
+        /* Lists */
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--border);
+            margin: 40px 0;
         }
     </style>
 </head>
-<body class="bg-brand-charcoal text-gray-100 font-sans h-full overflow-y-auto selection:bg-brand-neon selection:text-black">
+<body>
 
-    <!-- Top Premium Navigation -->
-    <header class="border-b border-gray-800 bg-brand-charcoal/90 backdrop-blur sticky top-0 z-50 px-4 py-4 md:px-8">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <span class="material-icons text-brand-neon text-3xl">bolt</span>
-                <span class="font-extrabold text-xl tracking-tight uppercase">Cali<span class="text-brand-neon">Power</span></span>
-            </div>
-            <div class="flex items-center space-x-4">
-                <span class="text-xs font-mono px-3 py-1 bg-gray-800 text-brand-neon rounded-full border border-gray-700">Target: 12% BF</span>
-                <span class="text-xs font-mono px-3 py-1 bg-gray-800 text-brand-gold rounded-full border border-gray-700">Level: Novice</span>
-            </div>
+    <!-- Auto-Scroll Navigation -->
+    <nav>
+        <a href="#overview">Overview</a>
+        <a href="#monday">Monday</a>
+        <a href="#tuesday">Tuesday</a>
+        <a href="#wednesday">Wednesday</a>
+        <a href="#thursday">Thursday</a>
+        <a href="#friday">Friday</a>
+        <a href="#saturday">Saturday</a>
+        <a href="#sunday">Sunday</a>
+    </nav>
+
+    <div class="container">
+        <h1>20-Week Calisthenics + Strength Recomposition Program[cite: 1]</h1>
+
+        <p><strong>Profile:</strong> 21M · 167 cm · 69 kg · ~26% BF · 2–3 strict pull-ups[cite: 1]</p>
+        <p><strong>Goals:</strong> 26% → 12% body fat · aesthetic, balanced physique · first strict muscle-up[cite: 1]</p>
+        <p><strong>Training days:</strong> Mon, Tue, Wed, Fri, Sat (5x/week) · Rest: Thu, Sun[cite: 1]</p>
+        <p><strong>Cardio:</strong> AM (fasted or light-fed) · Lifting/calisthenics: PM[cite: 1]</p>
+
+        <hr>
+
+        <h2 id="overview">1. The Math Behind the Goal[cite: 1]</h2>
+        <ul>
+            <li>Current: 69 kg @ 26% BF → ~18 kg fat / ~51 kg lean[cite: 1]</li>
+            <li>Target: 12% BF @ same (or slightly higher) lean mass → ~58 kg total[cite: 1]</li>
+            <li><strong>Net loss needed: ~11 kg over 20 weeks (~0.5 kg/week average)[cite: 1]</strong></li>
+        </ul>
+        <p>This is realistic <em>if</em> nutrition is consistent — but it won't be linear.[cite: 1] Weeks 1–10 will move faster (more fat to lose), weeks 15–20 will feel slower (this is normal, not a plateau to panic over).[cite: 1] If you add muscle simultaneously (very likely, since you're relatively new to structured training), the scale will lag behind how you actually look — trust tape measurements and photos as much as the scale.[cite: 1]</p>
+        <p><strong>Reassess every 5 weeks:</strong> weight, waist measurement, and ideally another InBody/caliper reading.[cite: 1] Adjust calories ±150–200 kcal based on actual rate of change, not the plan on paper.[cite: 1]</p>
+
+        <h2>2. Weekly Split Overview[cite: 1]</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Day[cite: 1]</th>
+                        <th>Focus[cite: 1]</th>
+                        <th>AM Cardio[cite: 1]</th>
+                        <th>PM Session[cite: 1]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Mon</strong>[cite: 1]</td>
+                        <td>Primary Pull (Calisthenics)[cite: 1]</td>
+                        <td>Incline walk 30–40 min[cite: 1]</td>
+                        <td>Pull-ups, muscle-up progression[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tue</strong>[cite: 1]</td>
+                        <td>Power Push (Barbell)[cite: 1]</td>
+                        <td>Jump rope / sprints (HIIT)[cite: 1]</td>
+                        <td>Incline press, OHP, dips[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Wed</strong>[cite: 1]</td>
+                        <td>Legs[cite: 1]</td>
+                        <td>Incline walk only (protect legs)[cite: 1]</td>
+                        <td>Squat, RDL, pistol progression[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Thu</strong>[cite: 1]</td>
+                        <td>Rest[cite: 1]</td>
+                        <td>Sprints or jump rope HIIT (optional)[cite: 1]</td>
+                        <td>Mobility / stretching only[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fri</strong>[cite: 1]</td>
+                        <td>Power Pull (Barbell)[cite: 1]</td>
+                        <td>Jump rope / sprints[cite: 1]</td>
+                        <td>Rows, pulldown, curls[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sat</strong>[cite: 1]</td>
+                        <td>Calisthenics Push + Skill[cite: 1]</td>
+                        <td>Incline walk[cite: 1]</td>
+                        <td>Dips, pseudo-planche, HSPU prog, L-sit[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sun</strong>[cite: 1]</td>
+                        <td>Full Rest[cite: 1]</td>
+                        <td>Optional easy walk[cite: 1]</td>
+                        <td>Off[cite: 1]</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </header>
+        <p><strong>Why cardio is split this way:</strong> sprinting/jump rope is CNS- and leg-taxing — it's placed on non-leg days (Tue, Thu, Fri) so it doesn't blunt your squat/RDL performance on Wednesday.[cite: 1] Incline walking (low-intensity, no impact) goes on leg day and skill days where you need fresh legs and joints.[cite: 1]</p>
 
-    <!-- Main Container -->
-    <main class="max-w-7xl mx-auto px-4 py-6 md:py-10 space-y-8 pb-20">
+        <hr>
 
-        <!-- Profile Banner / Goal Target Grid -->
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="md:col-span-2 bg-gradient-to-br from-brand-card to-black p-6 rounded-2xl border border-gray-800 flex flex-col justify-between">
-                <div>
-                    <span class="text-xs font-mono text-brand-neon uppercase tracking-widest font-bold">20-Week Aesthetic Protocol</span>
-                    <h1 class="text-3xl md:text-4xl font-extrabold mt-2 leading-tight">THE POWER CALISTHENICS TRANSFORMATION</h1>
-                    <p class="text-gray-400 mt-2 text-sm leading-relaxed">
-                        Designed specifically for <strong class="text-white">Age 21 | 167cm | 68kg</strong>. To shed <strong class="text-brand-neon">11kg of fat</strong> while building a strong, symmetric, and powerful calisthenics athletic framework.
-                    </p>
-                </div>
-                
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 pt-6 border-t border-gray-800/80">
-                    <div>
-                        <span class="text-xs text-gray-500 block">Height</span>
-                        <span class="text-lg font-bold text-white font-mono">167 cm</span>
-                    </div>
-                    <div>
-                        <span class="text-xs text-gray-500 block">Weight Target</span>
-                        <span class="text-lg font-bold text-brand-neon font-mono">57.0 kg</span>
-                    </div>
-                    <div>
-                        <span class="text-xs text-gray-500 block">Body Fat Goal</span>
-                        <span class="text-lg font-bold text-brand-neon font-mono">26% &rarr; 12%</span>
-                    </div>
-                    <div>
-                        <span class="text-xs text-gray-500 block">Timeline</span>
-                        <span class="text-lg font-bold text-white font-mono">20 Weeks</span>
-                    </div>
-                </div>
-            </div>
+        <h2>3. Daily Breakdown[cite: 1]</h2>
 
-            <!-- Interactive Metric Panel -->
-            <div class="bg-brand-card p-6 rounded-2xl border border-gray-800 space-y-5">
-                <h2 class="font-bold text-lg flex items-center gap-2">
-                    <span class="material-icons text-brand-gold">calculate</span> Daily Fuel Target
-                </h2>
-                <div class="space-y-3">
-                    <div class="flex justify-between items-center bg-black/40 p-3 rounded-xl border border-gray-800/50">
-                        <span class="text-sm text-gray-400">Maintenance (TDEE)</span>
-                        <span class="font-mono font-bold text-white">~2,250 kcal</span>
-                    </div>
-                    <div class="flex justify-between items-center bg-brand-neon/10 p-3 rounded-xl border border-brand-neon/20">
-                        <span class="text-sm text-brand-neon font-medium">Daily Cutting Limit</span>
-                        <span class="font-mono font-bold text-brand-neon text-lg">1,700 kcal</span>
-                    </div>
-                    <div class="flex justify-between items-center bg-black/40 p-3 rounded-xl border border-gray-800/50">
-                        <span class="text-sm text-gray-400">Protein Target</span>
-                        <span class="font-mono font-bold text-white">130g - 140g</span>
-                    </div>
-                </div>
-                <div class="bg-blue-950/20 p-3 rounded-xl border border-blue-900/40 text-xs text-blue-300 flex gap-2">
-                    <span class="material-icons text-sm mt-0.5">info</span>
-                    <span>Consuming at least 130g of protein preserves your skeletal muscle block while in a 550 calorie daily deficit.</span>
-                </div>
-            </div>
-        </section>
+        <h3 id="monday">Monday — Primary Pull Day[cite: 1]</h3>
+        <p><em>Warm-up: band pull-aparts, scapular pulls x10, dead hangs 2x20s[cite: 1]</em></p>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Exercise[cite: 1]</th>
+                        <th>Sets x Reps[cite: 1]</th>
+                        <th>Notes[cite: 1]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Strict Pull-ups[cite: 1]</td>
+                        <td>5 x AMRAP (leave 1 rep in tank)[cite: 1]</td>
+                        <td>Core lift — track weekly max[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Muscle-up progression[cite: 1]</td>
+                        <td>4 x 3–5[cite: 1]</td>
+                        <td>See Section 5 roadmap[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Chin-ups (underhand)[cite: 1]</td>
+                        <td>4 x 6–8[cite: 1]</td>
+                        <td>Add weight once >8 reps[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Ring rows / Australian rows[cite: 1]</td>
+                        <td>3 x 12[cite: 1]</td>
+                        <td>Feet elevated as you progress[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Scapular pull-ups[cite: 1]</td>
+                        <td>3 x 10[cite: 1]</td>
+                        <td>Slow, controlled[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Core:</strong> Hanging leg raises[cite: 1]</td>
+                        <td>3 x 10–12[cite: 1]</td>
+                        <td>Straight leg once controlled[cite: 1]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-        <!-- Calendar and Workout Day Selection -->
-        <section class="space-y-4">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                    <h2 class="text-2xl font-extrabold text-white">Weekly Calendar Schedule</h2>
-                    <p class="text-xs text-gray-500">Tap on any day to highlight and focus on the respective schedule block below.</p>
-                </div>
-                <div class="flex gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0">
-                    <button onclick="scrollToDay('monday')" class="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-xs font-mono font-bold rounded-lg transition-all shrink-0">MON</button>
-                    <button onclick="scrollToDay('tuesday')" class="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-xs font-mono font-bold rounded-lg transition-all shrink-0">TUE</button>
-                    <button onclick="scrollToDay('wednesday')" class="px-4 py-2 border border-brand-gold/40 text-brand-gold hover:bg-brand-gold/10 text-xs font-mono font-bold rounded-lg transition-all shrink-0">WED</button>
-                    <button onclick="scrollToDay('thursday')" class="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-xs font-mono font-bold rounded-lg transition-all shrink-0">THU</button>
-                    <button onclick="scrollToDay('friday')" class="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-xs font-mono font-bold rounded-lg transition-all shrink-0">FRI</button>
-                    <button onclick="scrollToDay('saturday')" class="px-4 py-2 border border-brand-gold/40 text-brand-gold hover:bg-brand-gold/10 text-xs font-mono font-bold rounded-lg transition-all shrink-0">SAT</button>
-                    <button onclick="scrollToDay('sunday')" class="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-xs font-mono font-bold rounded-lg transition-all shrink-0">SUN</button>
-                </div>
-            </div>
+        <h3 id="tuesday">Tuesday — Power Push Day[cite: 1]</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Exercise[cite: 1]</th>
+                        <th>Sets x Reps[cite: 1]</th>
+                        <th>Notes[cite: 1]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Incline Barbell Bench Press[cite: 1]</td>
+                        <td>4 x 6–8[cite: 1]</td>
+                        <td>Primary mass builder[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Standing Military Press[cite: 1]</td>
+                        <td>4 x 6–8[cite: 1]</td>
+                        <td>Strict, no leg drive[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Weighted Dips[cite: 1]</td>
+                        <td>3 x 8–10[cite: 1]</td>
+                        <td>Bodyweight until form is clean[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Flat/Incline DB Press[cite: 1]</td>
+                        <td>3 x 10[cite: 1]</td>
+                        <td>Higher rep, controlled tempo[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Lateral Raises[cite: 1]</td>
+                        <td>3 x 15[cite: 1]</td>
+                        <td>Light, strict — shoulder width[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Triceps (pressdown/skullcrusher)[cite: 1]</td>
+                        <td>3 x 12[cite: 1]</td>
+                        <td>[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Core:</strong> Cable crunches[cite: 1]</td>
+                        <td>3 x 15[cite: 1]</td>
+                        <td>[cite: 1]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-            <!-- The Daily Worksheets -->
-            <div class="space-y-6">
+        <h3 id="wednesday">Wednesday — Leg Day[cite: 1]</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Exercise[cite: 1]</th>
+                        <th>Sets x Reps[cite: 1]</th>
+                        <th>Notes[cite: 1]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Barbell Back Squat[cite: 1]</td>
+                        <td>4 x 6–8[cite: 1]</td>
+                        <td>Alternate Front Squat every other week[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Romanian Deadlift[cite: 1]</td>
+                        <td>4 x 8[cite: 1]</td>
+                        <td>Focus hamstring stretch, not lower back[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Bulgarian Split Squat[cite: 1]</td>
+                        <td>3 x 10/leg[cite: 1]</td>
+                        <td>[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Pistol Squat progression[cite: 1]</td>
+                        <td>3 x 5/leg[cite: 1]</td>
+                        <td>Box-assisted → band-assisted → full[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Standing Calf Raise[cite: 1]</td>
+                        <td>4 x 15[cite: 1]</td>
+                        <td>[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Core:</strong> Weighted plank or ab wheel[cite: 1]</td>
+                        <td>3 x 30–45s / 3 x 8[cite: 1]</td>
+                        <td>[cite: 1]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-                <!-- MONDAY: UPPER PULL FOCUS -->
-                <div id="monday" class="bg-brand-card rounded-2xl border border-gray-800 overflow-hidden transition-all duration-300 hover:border-gray-700">
-                    <div class="p-6 bg-gradient-to-r from-blue-950/30 to-transparent flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-gray-800/60">
-                        <div>
-                            <span class="text-xs font-bold font-mono text-brand-accent tracking-widest block uppercase">DAY 1 &bull; STRENGTH</span>
-                            <h3 class="text-xl font-bold text-white flex items-center gap-2 mt-1">
-                                Monday: Upper Body (Pull Focus)
-                            </h3>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="px-3 py-1 bg-blue-900/30 border border-blue-800/40 text-blue-300 text-xs font-mono rounded-md">Time: 45-60 min</span>
-                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-xs font-mono rounded-md">Type: Pull/Push</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="text-xs font-mono text-gray-500 border-b border-gray-800/80">
-                                    <th class="pb-3 w-1/3">EXERCISE</th>
-                                    <th class="pb-3 w-1/4">TARGET REP RANGE</th>
-                                    <th class="pb-3 w-1/4">REST</th>
-                                    <th class="pb-3 text-right">COACH NOTES</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-800/40 text-sm">
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Band-Assisted Pull-ups</td>
-                                    <td class="py-4 font-mono">3 Sets x 8-10 reps</td>
-                                    <td class="py-4 text-gray-400">90 - 120s</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Use a resistance band that allows perfect range of motion.</td>
-                                </tr>
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Standard Push-ups</td>
-                                    <td class="py-4 font-mono">3 Sets x 10-15 reps</td>
-                                    <td class="py-4 text-gray-400">90s</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Keep glutes/core tight. Tightly tuck elbows at 45-deg.</td>
-                                </tr>
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Inverted Rows</td>
-                                    <td class="py-4 font-mono">3 Sets x 10-12 reps</td>
-                                    <td class="py-4 text-gray-400">90s</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Hang under a low bar. Pull chest up to touch bar.</td>
-                                </tr>
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Assisted Dips</td>
-                                    <td class="py-4 font-mono">3 Sets x 8-10 reps</td>
-                                    <td class="py-4 text-gray-400">90 - 120s</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Use machine or bands to protect shoulder rotators.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+        <h3 id="thursday">Thursday — Rest[cite: 1]</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Focus[cite: 1]</th>
+                        <th>Details[cite: 1]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rest / Active Recovery[cite: 1]</td>
+                        <td>Mobility (hips, shoulders, thoracic spine), light stretching.[cite: 1] Optional cardio only — no lifting.[cite: 1]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-                <!-- TUESDAY: LOWER POWER & CORE -->
-                <div id="tuesday" class="bg-brand-card rounded-2xl border border-gray-800 overflow-hidden transition-all duration-300 hover:border-gray-700">
-                    <div class="p-6 bg-gradient-to-r from-emerald-950/30 to-transparent flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-gray-800/60">
-                        <div>
-                            <span class="text-xs font-bold font-mono text-brand-emerald tracking-widest block uppercase">DAY 2 &bull; ATHLETIC</span>
-                            <h3 class="text-xl font-bold text-white flex items-center gap-2 mt-1">
-                                Tuesday: Lower Body &amp; Core Focus
-                            </h3>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="px-3 py-1 bg-emerald-900/30 border border-emerald-800/40 text-emerald-300 text-xs font-mono rounded-md">Time: 45 min</span>
-                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-xs font-mono rounded-md">Type: Legs/Abs</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="text-xs font-mono text-gray-500 border-b border-gray-800/80">
-                                    <th class="pb-3 w-1/3">EXERCISE</th>
-                                    <th class="pb-3 w-1/4">TARGET REP RANGE</th>
-                                    <th class="pb-3 w-1/4">REST</th>
-                                    <th class="pb-3 text-right">COACH NOTES</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-800/40 text-sm">
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Bulgarian Split Squats</td>
-                                    <td class="py-4 font-mono">3 Sets x 10 reps/leg</td>
-                                    <td class="py-4 text-gray-400">90s</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Elevate rear foot on bench. Hold light dumbbells if easy.</td>
-                                </tr>
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Jump Squats</td>
-                                    <td class="py-4 font-mono">3 Sets x 15 reps</td>
-                                    <td class="py-4 text-gray-400">90s</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Explode upwards high. Soft landings on toes.</td>
-                                </tr>
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Hanging Knee Raises</td>
-                                    <td class="py-4 font-mono">3 Sets x 10-15 reps</td>
-                                    <td class="py-4 text-gray-400">60s</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Hang from pull-up bar. Bring knees up towards chest.</td>
-                                </tr>
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">L-Sit Practice (Tuck)</td>
-                                    <td class="py-4 font-mono">Accumulate 60s total</td>
-                                    <td class="py-4 text-gray-400">As needed</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Perform on gym parallel bars. Hold tucked knees dynamic.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+        <h3 id="friday">Friday — Power Pull Day[cite: 1]</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Exercise[cite: 1]</th>
+                        <th>Sets x Reps[cite: 1]</th>
+                        <th>Notes[cite: 1]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Barbell Rows[cite: 1]</td>
+                        <td>4 x 6–8[cite: 1]</td>
+                        <td>Underhand or overhand, alternate weekly[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Lat Pulldown (wide grip)[cite: 1]</td>
+                        <td>4 x 8–10[cite: 1]</td>
+                        <td>Builds width — pairs with pull-up work[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Single-Arm DB Row[cite: 1]</td>
+                        <td>3 x 10[cite: 1]</td>
+                        <td>[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Face Pulls[cite: 1]</td>
+                        <td>3 x 15[cite: 1]</td>
+                        <td>Shoulder health — don't skip[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Preacher Curls[cite: 1]</td>
+                        <td>3 x 10[cite: 1]</td>
+                        <td>[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Hammer Curls[cite: 1]</td>
+                        <td>3 x 10[cite: 1]</td>
+                        <td>[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Core:</strong> Hanging windshield wipers[cite: 1]</td>
+                        <td>3 x 8/side[cite: 1]</td>
+                        <td>Or lying leg raise if not ready[cite: 1]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-                <!-- WEDNESDAY: LIGHT ACTIVE RECOVERY -->
-                <div id="wednesday" class="bg-brand-card rounded-2xl border border-brand-gold/30 overflow-hidden transition-all duration-300 hover:border-brand-gold/60">
-                    <div class="p-6 bg-gradient-to-r from-yellow-950/20 to-transparent flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-brand-gold/20">
-                        <div>
-                            <span class="text-xs font-bold font-mono text-brand-gold tracking-widest block uppercase">DAY 3 &bull; RECOVERY PROTOCOL</span>
-                            <h3 class="text-xl font-bold text-white flex items-center gap-2 mt-1">
-                                Wednesday: Light Active Recovery &amp; Mobility
-                            </h3>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="px-3 py-1 bg-yellow-900/30 border border-yellow-800/40 text-brand-gold text-xs font-mono rounded-md">Time: 30-40 min</span>
-                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-xs font-mono rounded-md">Type: Mobility/LISS</span>
-                        </div>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="bg-yellow-950/10 p-4 rounded-xl border border-yellow-900/30 text-sm text-yellow-200/90 leading-relaxed">
-                            <strong class="text-white">Why active recovery?</strong> Wednesday intercepts your week to flash-flush out cellular metabolic lactic waste and lubricate muscle tendons. Running a calorie deficit creates nervous stress; keep this workout strictly low-intensity to recharge.
-                        </div>
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="text-xs font-mono text-gray-500 border-b border-gray-800/80">
-                                    <th class="pb-3 w-1/3">EXERCISE BLOCK</th>
-                                    <th class="pb-3 w-1/4">DURATION / PROTOCOL</th>
-                                    <th class="pb-3 w-1/4">INTENSITY LEVEL</th>
-                                    <th class="pb-3 text-right">GOAL ACTION</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-800/40 text-sm">
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">LISS Cardio (Incline Treadmill Walk)</td>
-                                    <td class="py-4 font-mono">25 - 30 Minutes</td>
-                                    <td class="py-4 text-emerald-400">Low (Heart rate &lt; 120 bpm)</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Keeps metabolism high while burning pure fat without taxing muscles.</td>
-                                </tr>
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Dead Hangs</td>
-                                    <td class="py-4 font-mono">3 Sets x 30-45 seconds</td>
-                                    <td class="py-4 text-emerald-400">Gentle Decompression</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Decompresses spine; lubricates shoulders for pullups.</td>
-                                </tr>
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Shoulder Dislocates (with Band)</td>
-                                    <td class="py-4 font-mono">2 Sets x 15 reps</td>
-                                    <td class="py-4 text-emerald-400">Smooth Rotation</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Increases shoulder socket rotation capability.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+        <h3 id="saturday">Saturday — Calisthenics Push + Skill Day[cite: 1]</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Exercise[cite: 1]</th>
+                        <th>Sets x Reps[cite: 1]</th>
+                        <th>Notes[cite: 1]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Skill: Muscle-up transition drills[cite: 1]</td>
+                        <td>5 x 3[cite: 1]</td>
+                        <td>Fresh CNS — do first[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Handstand practice (wall)[cite: 1]</td>
+                        <td>5 x 20–30s[cite: 1]</td>
+                        <td>Builds toward push skill work[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Pseudo-Planche Push-ups[cite: 1]</td>
+                        <td>4 x 8[cite: 1]</td>
+                        <td>Lean forward, hands by hips[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Dips (bodyweight, deep ROM)[cite: 1]</td>
+                        <td>4 x 10[cite: 1]</td>
+                        <td>Full stretch at bottom[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Pike Push-ups (HSPU progression)[cite: 1]</td>
+                        <td>3 x 8[cite: 1]</td>
+                        <td>Elevate feet as you progress[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>L-sit hold[cite: 1]</td>
+                        <td>4 x 15–20s[cite: 1]</td>
+                        <td>Tuck-sit if L-sit not ready[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Core:</strong> Dragon flag progression[cite: 1]</td>
+                        <td>3 x 5[cite: 1]</td>
+                        <td>Bent-knee version first[cite: 1]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-                <!-- THURSDAY: UPPER PUSH FOCUS -->
-                <div id="thursday" class="bg-brand-card rounded-2xl border border-gray-800 overflow-hidden transition-all duration-300 hover:border-gray-700">
-                    <div class="p-6 bg-gradient-to-r from-purple-950/30 to-transparent flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-gray-800/60">
-                        <div>
-                            <span class="text-xs font-bold font-mono text-purple-400 tracking-widest block uppercase">DAY 4 &bull; HYPERTROPHY</span>
-                            <h3 class="text-xl font-bold text-white flex items-center gap-2 mt-1">
-                                Thursday: Upper Body (Push Focus)
-                            </h3>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="px-3 py-1 bg-purple-900/30 border border-purple-800/40 text-purple-300 text-xs font-mono rounded-md">Time: 50 min</span>
-                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-xs font-mono rounded-md">Type: Push/Pull</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="text-xs font-mono text-gray-500 border-b border-gray-800/80">
-                                    <th class="pb-3 w-1/3">EXERCISE</th>
-                                    <th class="pb-3 w-1/4">TARGET REP RANGE</th>
-                                    <th class="pb-3 w-1/4">REST</th>
-                                    <th class="pb-3 text-right">COACH NOTES</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-800/40 text-sm">
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Pike Push-ups</td>
-                                    <td class="py-4 font-mono">3 Sets x 6-10 reps</td>
-                                    <td class="py-4 text-gray-400">90s</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Keep hips high, forming an inverted V shape. Builds shoulders.</td>
-                                </tr>
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Slow Eccentric Pull-up Negatives</td>
-                                    <td class="py-4 font-mono">3 Sets x 5 reps</td>
-                                    <td class="py-4 text-gray-400">120s</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Jump to top. Lower down over a 5-second countdown.</td>
-                                </tr>
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Diamond Push-ups</td>
-                                    <td class="py-4 font-mono">3 Sets x 10-15 reps</td>
-                                    <td class="py-4 text-gray-400">90s</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Hands closer together under sternum. Blasts the triceps.</td>
-                                </tr>
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Underhand Grip Chin-ups</td>
-                                    <td class="py-4 font-mono">3 Sets x Max reps (then band)</td>
-                                    <td class="py-4 text-gray-400">90s</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Target bicep pull raw power. Use bands for extra reps.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+        <h3 id="sunday">Sunday — Full Rest[cite: 1]</h3>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Focus[cite: 1]</th>
+                        <th>Details[cite: 1]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Full Rest[cite: 1]</td>
+                        <td>Off.[cite: 1] Sleep and food matter more than any workout this week.[cite: 1]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-                <!-- FRIDAY: LOWER VOLUME & CORE -->
-                <div id="friday" class="bg-brand-card rounded-2xl border border-gray-800 overflow-hidden transition-all duration-300 hover:border-gray-700">
-                    <div class="p-6 bg-gradient-to-r from-teal-950/30 to-transparent flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-gray-800/60">
-                        <div>
-                            <span class="text-xs font-bold font-mono text-teal-300 tracking-widest block uppercase">DAY 5 &bull; LEGS &amp; CORE</span>
-                            <h3 class="text-xl font-bold text-white flex items-center gap-2 mt-1">
-                                Friday: Lower Body &amp; Midsection Volume
-                            </h3>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="px-3 py-1 bg-teal-900/30 border border-teal-800/40 text-teal-300 text-xs font-mono rounded-md">Time: 45 min</span>
-                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-xs font-mono rounded-md">Type: Conditioning</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="text-xs font-mono text-gray-500 border-b border-gray-800/80">
-                                    <th class="pb-3 w-1/3">EXERCISE</th>
-                                    <th class="pb-3 w-1/4">TARGET REP RANGE</th>
-                                    <th class="pb-3 w-1/4">REST</th>
-                                    <th class="pb-3 text-right">COACH NOTES</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-800/40 text-sm">
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Goblet Squats (with Dumbbell)</td>
-                                    <td class="py-4 font-mono">3 Sets x 12 reps</td>
-                                    <td class="py-4 text-gray-400">90s</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Hold dumbbell vertically under chin. Keep spine upright.</td>
-                                </tr>
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Walking Lunges</td>
-                                    <td class="py-4 font-mono">3 Sets x 20 total steps</td>
-                                    <td class="py-4 text-gray-400">90s</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Take large strides, driving weight through front heel.</td>
-                                </tr>
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Forearm Plank</td>
-                                    <td class="py-4 font-mono">3 Sets x 60 seconds</td>
-                                    <td class="py-4 text-gray-400">60s</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Squeeze core and glutes horizontally straight.</td>
-                                </tr>
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Standing Calf Raises</td>
-                                    <td class="py-4 font-mono">3 Sets x 20 reps</td>
-                                    <td class="py-4 text-gray-400">60s</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Execute on step or plate for deep lower stretching.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+        <hr>
 
-                <!-- SATURDAY: LIGHT RECOVERY OUTDOORS -->
-                <div id="saturday" class="bg-brand-card rounded-2xl border border-brand-gold/30 overflow-hidden transition-all duration-300 hover:border-brand-gold/60">
-                    <div class="p-6 bg-gradient-to-r from-yellow-950/20 to-transparent flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-brand-gold/20">
-                        <div>
-                            <span class="text-xs font-bold font-mono text-brand-gold tracking-widest block uppercase">DAY 6 &bull; OUTDOOR / OFF-CAMPUS</span>
-                            <h3 class="text-xl font-bold text-white flex items-center gap-2 mt-1">
-                                Saturday: Outdoor LISS Recovery Walk &amp; Core Decompress
-                            </h3>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="px-3 py-1 bg-yellow-900/30 border border-yellow-800/40 text-brand-gold text-xs font-mono rounded-md">Time: 40-50 min</span>
-                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-xs font-mono rounded-md">Type: LISS Cardio</span>
-                        </div>
-                    </div>
-                    <div class="p-6 space-y-4">
-                        <div class="bg-yellow-950/10 p-4 rounded-xl border border-yellow-900/30 text-sm text-yellow-200/90 leading-relaxed">
-                            <strong class="text-white">Fat burning peak:</strong> Saturday keeps calorie expenditures elevated. A fasted morning walk maximizes your lipolysis (fat cell burning) since your liver glycogen stores are low from sleeping.
-                        </div>
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="text-xs font-mono text-gray-500 border-b border-gray-800/80">
-                                    <th class="pb-3 w-1/3">ACTIVITY BLOCK</th>
-                                    <th class="pb-3 w-1/4">TARGET QUANTITY</th>
-                                    <th class="pb-3 w-1/4">INTENSITY LEVEL</th>
-                                    <th class="pb-3 text-right">GOAL ACTION</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-800/40 text-sm">
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Outdoors Flat Walk (Fasted Preferred)</td>
-                                    <td class="py-4 font-mono">35 - 45 Minutes (or ~7,000 steps)</td>
-                                    <td class="py-4 text-emerald-400">Easy, conversational pace</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Burns high ratio of fatty acids directly. Excellent mental break.</td>
-                                </tr>
-                                <tr class="hover:bg-white/[0.01]">
-                                    <td class="py-4 font-semibold text-white">Active Hamstring &amp; Hip Stretching</td>
-                                    <td class="py-4 font-mono">10 - 15 Minutes</td>
-                                    <td class="py-4 text-emerald-400">Mild stretch intensity</td>
-                                    <td class="py-4 text-xs text-gray-400 text-right">Releases tight hamstring/hips from Tuesday and Friday squats.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+        <h2>4. The 20 Weeks in 4 Blocks[cite: 1]</h2>
+        <p>Each block = 4 working weeks + 1 lighter "deload/diet-break" week (drop volume ~40%, eat at maintenance calories).[cite: 1] This protects joints, resets hormones, and gives you a mental breather.[cite: 1]</p>
 
-                <!-- SUNDAY: FULL PASSIVE REST -->
-                <div id="sunday" class="bg-brand-card rounded-2xl border border-gray-800 overflow-hidden transition-all duration-300 hover:border-gray-700">
-                    <div class="p-6 bg-gradient-to-r from-red-950/20 to-transparent flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-gray-800/60">
-                        <div>
-                            <span class="text-xs font-bold font-mono text-rose-400 tracking-widest block uppercase font-bold">DAY 7 &bull; ADAPTATION</span>
-                            <h3 class="text-xl font-bold text-white flex items-center gap-2 mt-1">
-                                Sunday: Full Passive Rest &amp; Reset
-                            </h3>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="px-3 py-1 bg-rose-900/30 border border-rose-800/40 text-rose-300 text-xs font-mono rounded-md">Time: 24h</span>
-                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-xs font-mono rounded-md">Type: Zero Work</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="space-y-3">
-                                <h4 class="text-white font-bold text-sm uppercase tracking-wider text-rose-300">Sunday Rest Mandate</h4>
-                                <p class="text-gray-400 text-xs leading-relaxed">
-                                    No calisthenics, no weighted movements, no high-intensity work. Let your central nervous system (CNS) completely restabilize and recharge.
-                                </p>
-                            </div>
-                            <div class="bg-black/30 p-4 rounded-xl border border-gray-800 space-y-2">
-                                <h5 class="text-xs font-mono font-bold text-brand-gold uppercase">Reset Checklist</h5>
-                                <ul class="text-xs text-gray-400 space-y-1">
-                                    <li class="flex items-center gap-2"><span class="material-icons text-brand-neon text-xs">done</span> Ensure 8-9 hours of continuous night sleep</li>
-                                    <li class="flex items-center gap-2"><span class="material-icons text-brand-neon text-xs">done</span> Meal prep high protein items for the upcoming week</li>
-                                    <li class="flex items-center gap-2"><span class="material-icons text-brand-neon text-xs">done</span> Hydrate cleanly with mineral water</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Block[cite: 1]</th>
+                        <th>Weeks[cite: 1]</th>
+                        <th>Focus[cite: 1]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1 — Foundation</strong>[cite: 1]</td>
+                        <td>1–5[cite: 1]</td>
+                        <td>Build work capacity, bulletproof form, grow pull-up max (target: 6–8 reps by week 5)[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2 — Strength & Skill</strong>[cite: 1]</td>
+                        <td>6–10[cite: 1]</td>
+                        <td>Heavier barbell loads, introduce false-grip work and banded muscle-up transitions[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3 — Intensification</strong>[cite: 1]</td>
+                        <td>11–15[cite: 1]</td>
+                        <td>Higher pull volume, low-ring/jumping muscle-up transitions, visible leaning-out[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4 — Peak</strong>[cite: 1]</td>
+                        <td>16–20[cite: 1]</td>
+                        <td>Strict muscle-up attempts, tempo/definition work, final push to 12%[cite: 1]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Week 5, 10, 15, 20 = deload/diet-break weeks.[cite: 1]</p>
 
-            </div>
-        </section>
+        <hr>
 
-    </main>
+        <h2>5. Muscle-Up Roadmap (from 2–3 pull-ups)[cite: 1]</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Phase[cite: 1]</th>
+                        <th>What to add on Monday's "muscle-up progression" slot[cite: 1]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Weeks 1–5[cite: 1]</td>
+                        <td>Explosive pull-ups (chest to bar), false-grip dead hangs 4x15–20s[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Weeks 6–10[cite: 1]</td>
+                        <td>False-grip pull-ups, banded low transitions on rings[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Weeks 11–15[cite: 1]</td>
+                        <td>Jumping muscle-ups (rings/bar), straight bar kip-free transition drills[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Weeks 16–20[cite: 1]</td>
+                        <td>Banded strict muscle-up attempts → unassisted attempts[cite: 1]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Realistic target: your first strict muscle-up somewhere in weeks 14–20, depending on relative strength gains.[cite: 1] Chest-to-bar pull-up strength (aim: 8–10 clean reps) is the single best predictor — prioritize that over transition drilling early on.[cite: 1]</p>
 
-    <!-- Footer script for anchor navigation scrolling -->
-    <script>
-        function scrollToDay(dayId) {
-            const element = document.getElementById(dayId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                // Briefly flash a subtle glow border
-                element.classList.add('glow-gold');
-                setTimeout(() => {
-                    element.classList.remove('glow-gold');
-                }, 2000);
-            }
-        }
-    </script>
+        <hr>
+
+        <h2>6. Nutrition Guardrails[cite: 1]</h2>
+        <p><em>Estimated maintenance (Mifflin-St Jeor, moderate activity): ~2,500 kcal/day[cite: 1]</em></p>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Target[cite: 1]</th>
+                        <th>Amount[cite: 1]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Daily calories (cut)[cite: 1]</td>
+                        <td>~2,000–2,100 kcal (400–500 kcal deficit)[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Protein[cite: 1]</td>
+                        <td>150–160g/day (~2.2g/kg) — non-negotiable for muscle retention[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Carbs[cite: 1]</td>
+                        <td>200–250g/day, concentrated around training[cite: 1]</td>
+                    </tr>
+                    <tr>
+                        <td>Fats[cite: 1]</td>
+                        <td>55–65g/day[cite: 1]</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <ul>
+            <li>Recheck bodyweight trend weekly (average, not single day-to-day readings).[cite: 1]</li>
+            <li>If weight loss stalls for 2+ weeks with adherence confirmed, drop ~150 kcal.[cite: 1]</li>
+            <li>On deload weeks, eat at maintenance (~2,500 kcal) — this isn't optional, it's what makes the next block productive.[cite: 1]</li>
+        </ul>
+
+        <hr>
+
+        <h2>7. Non-Negotiables[cite: 1]</h2>
+        <ul>
+            <li><strong>Sleep 7–8 hrs</strong> — this affects fat loss and recovery more than any single workout.[cite: 1]</li>
+            <li><strong>Protein at every meal</strong> — hardest thing to fix retroactively.[cite: 1]</li>
+            <li><strong>Don't skip face pulls / scapular work</strong> — pull-up and dip-heavy programs wreck shoulders without them.[cite: 1]</li>
+            <li><strong>Track pull-up max weekly</strong> — it's your best real-time progress signal alongside the scale/tape.[cite: 1]</li>
+        </ul>
+    </div>
 </body>
 </html>
